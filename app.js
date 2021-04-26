@@ -1,13 +1,17 @@
 const express = require("express");
-const path = require("path");
 const session = require("express-session");
+const exphbs  = require('express-handlebars');
+const path = require("path");
 const config = require("config");
 const router = require("./routes");
+const app = express();
 require("./database");
 
 
-const app = express();
+app.engine('hbs', exphbs({extname: '.hbs'}));
+app.set('view engine', 'hbs');
 app.use(router);
+
 
 
 app.listen(config.port, () => {
