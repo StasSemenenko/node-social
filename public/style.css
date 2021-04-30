@@ -1,0 +1,50 @@
+.posts {
+	color: red;
+}
+
+
+/* .card {
+	width:80%;
+	height:350px;
+	margin:0 auto;
+	background: #369;  
+	width: 18rem;
+  } */
+
+
+.content p {
+	font-family: "Times New Roman";
+}
+
+
+.card {
+	margin: auto;
+}
+
+.nav-wrapper {
+	background-color: orange;
+	width: 100%;
+	height: 100px;
+	/* position: relative; */
+}
+
+.brand-logo {
+	background-color: black;
+
+}
+
+.nav-mobile {
+	float: right;
+	display: inline; /* Отображать как строчный элемент */
+}
+
+#nav-mobile li {
+	display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+	float: left;
+	
+	
+}
+
+
+

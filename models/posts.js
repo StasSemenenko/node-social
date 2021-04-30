@@ -1,4 +1,4 @@
-const mongoose = require("mongosse");
+const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
 	title: {

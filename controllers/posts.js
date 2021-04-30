@@ -6,10 +6,11 @@ module.exports = {
 		try {
 
 			var posts = await Posts.find({});
-			res.render("home", {
+			res.render("index", {
 				title: "Главная",
 				post: "Пост",
-				comment: "Это комментарий"
+				comment: "Это комментарий",
+				name:"1234567"
 			})
 		}
 		catch(e) {
@@ -17,6 +18,11 @@ module.exports = {
 		}
 	},
 	createPost(req, res) {
-		
+		res.render("add", {
+				title: "Добавить пост",
+				string: "Введите название поста",
+				comment: "Ввдедите описание поста ",
+				name:"Создать пост"
+			})
 	}
 }

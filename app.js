@@ -10,6 +10,7 @@ require("./database");
 
 app.engine('hbs', exphbs({extname: '.hbs'}));
 app.set('view engine', 'hbs');
+app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use(router);
 
 
