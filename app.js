@@ -1,5 +1,5 @@
 const express = require("express");
-const session = require("express-session");
+const cookieParser = require('cookie-parser');
 const exphbs  = require('express-handlebars');
 const path = require("path");
 const config = require("config");
@@ -10,6 +10,9 @@ require("./database");
 
 app.engine('hbs', exphbs({extname: '.hbs'}));
 app.set('view engine', 'hbs');
+app.use(cookieParser(config.cookiePassword));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use(router);
 

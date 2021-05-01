@@ -1,16 +1,8 @@
-.posts {
-	color: red;
+.container {
+	text-align: center;
+	margin-left: 30%;
+	margin-right: 30%;
 }
-
-
-/* .card {
-	width:80%;
-	height:350px;
-	margin:0 auto;
-	background: #369;  
-	width: 18rem;
-  } */
-
 
 .content p {
 	font-family: "Times New Roman";
@@ -33,18 +25,47 @@
 
 }
 
-.nav-mobile {
-	float: right;
-	display: inline; /* Отображать как строчный элемент */
+.img {
+	float: left;
+	/* margin-top: 30px; */
+	height: 100%;
+		
 }
 
-#nav-mobile li {
+.menu {
+	float: right;
 	display: inline; /* Отображать как строчный элемент */
+	height: 100%;
+	
+}
+
+#menu li {
+	display: inline; /* Отображать как строчный элемент */
+	margin-top: 10px;
     margin-right: 5px; /* Отступ слева */
 	float: left;
 	
-	
 }
 
+#menu a {
+	color: white;
+	text-decoration: none;
+	/* padding: 10px; */
+}
 
+#menu  a:hover {
+    background: rgb(252, 188, 69);
+	height: 100%;
 
+}
+
+.authpage {
+	border: 1px solid black;
+
+}
+
+.input {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: justify;
+}

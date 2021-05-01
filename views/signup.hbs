@@ -1,0 +1,31 @@
+<h1>Регистрация</h1>
+
+<div class="authpage">
+	<form action="/auth/signup" method="POST">
+     	<div class="input">
+            <input name="email" type="email" >
+            <label for="title">Веведите Ваше email</label>
+        </div>
+         
+         <div class="input">
+            <input name="name" type="text" >
+            <label for="title">Веведите Ваше имя</label>
+        </div>
+
+    	<div class="input">
+            <input name="password" type="password">
+            <label for="price">Введите пароль </label>
+        </div>
+
+    	<div class="input">
+            <input name="password2" type="password" >
+            <label for="img">Введите пароль повторно</label>
+        </div>
+
+    	<button class="btn btn-primary">Зарегистрироваться</button>
+        
+        {{#if error}}
+            <p>{{error}}</p>
+        {{/if}}
+	</form>
+</div>

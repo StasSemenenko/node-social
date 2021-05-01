@@ -1,4 +1,5 @@
 {
 	"port": 3000,
-	"mongo": "mongodb://localhost"
+	"mongo": "mongodb://localhost",
+	"cookiePassword": "es0rDdtDhV@g3jk"
 }
