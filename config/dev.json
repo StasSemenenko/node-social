@@ -1,5 +1,5 @@
 {
 	"port": 3000,
-	"mongo": "mongodb://localhost",
+	"mongo": "mongodb://localhost/twitter",
 	"cookiePassword": "es0rDdtDhV@g3jk"
 }

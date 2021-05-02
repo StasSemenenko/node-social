@@ -2,7 +2,7 @@
 	<div class="nav-wrapper">
 	  <div class="img">
 		<a href="/" class="brand-logo">
-			<img src="/public/img/logo.PNG">
+			<img class="brand-logo" src="/public/img/logo.PNG">
 		</a>
 	  </div>
 	  <div class="menu">
@@ -10,9 +10,12 @@
 	    	<li class="active"><a href="/">Главная</a></li>
 
 	    	<li class="active"><a href="/user">Пользователи</a></li>
-
-	    	<li class="active"><a href="/auth/signin">Войти</a></li>
-				
+			{{#if is_auth}}
+	    		<li class="active"><a href="/profile">Профиль</a></li>
+				<li class="active"><a href="/auth/signout">Выйти</a></li>
+			{{else}}
+				<li class="active"><a href="/auth/signin">Войти</a></li>
+			{{/if}}
 		  </ul>
 	  </div>
 	</div>

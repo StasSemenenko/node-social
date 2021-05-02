@@ -14,7 +14,7 @@ module.exports = {
 	},
 	async createAccount(req, res) {
 		var { email, name, password, password2 } = req.body;
-		if(password === password2){
+		if(password !== password2){
 			return res.render("signup", {
 				error: "Пароли не совпадают"
 			})
@@ -40,6 +40,11 @@ module.exports = {
 		catch (e) {
 			console.log(e);
 		}
+	},
+	signout(req, res) {
+		res.clearCookie("user_id");
+		res.clearCookie("name");
+		res.redirect("/");
 	}
 
 }
