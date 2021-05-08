@@ -7,6 +7,8 @@ router.get("/signup", auth.signupPage);
 router.get("/signout", auth.signout);
 
 router.post("/signup", auth.createAccount);
+router.post("/signin", auth.loginAccount);
+
 
 
 module.exports = router;

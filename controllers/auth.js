@@ -45,6 +45,27 @@ module.exports = {
 		res.clearCookie("user_id");
 		res.clearCookie("name");
 		res.redirect("/");
+	},
+	async loginAccount(req, res) {
+		try {
+			const {email, password} = req.body;
+	
+			var user = await Users.findOne({ email, password})
+			console.log(user);
+			if (user) {
+				res.cookie("user_id", user._id);
+				res.cookie("name", user.name);
+				res.redirect("/"); 
+			}
+			else {
+				res.render("signIn", {
+					error: "Не верные данные!"
+				})
+			}
+		}
+		catch (e) {
+			console.log(e)
+		}
 	}
 
 }

@@ -1,2 +1,27 @@
 <h1>Страница авторизации</h1>
-<p>Если Вы не зарегистрированы то перейдите по <a href="/auth/signup">ссылке</a>
+
+
+<h1>Регистрация</h1>
+
+<div class="logpage">
+	<form action="/auth/signin" method="POST">
+     	<div class="input">
+            <input name="email" type="email" >
+            <label for="title">Веведите Ваше email</label>
+        </div>
+         
+    	<div class="input">
+            <input name="password" type="password">
+            <label for="price">Введите пароль </label>
+        </div>
+
+    	<button class="btn btn-primary">Войти</button>
+        
+        {{!-- {{#if error}}
+            <p>{{error}}</p>
+        {{/if}} --}}
+	</form>
+</div>
+
+
+<p>Если у Вас еще нет аккаунта, то  <a href="/auth/signup">зарегистрируйтесь</a>

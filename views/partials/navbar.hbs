@@ -2,21 +2,19 @@
 	<div class="nav-wrapper">
 	  <div class="img">
 		<a href="/" class="brand-logo">
-			<img class="brand-logo" src="/public/img/logo.PNG">
-		</a>
+			<img class="brand-logo" src="/public/img/logo.PNG"></a>
 	  </div>
 	  <div class="menu">
-		  <ul id="menu">
-	    	<li class="active"><a href="/">Главная</a></li>
-
-	    	<li class="active"><a href="/user">Пользователи</a></li>
+			<a href="/">Главная</a>
+	    	<a href="/users">Пользователи</a>
 			{{#if is_auth}}
-	    		<li class="active"><a href="/profile">Профиль</a></li>
-				<li class="active"><a href="/auth/signout">Выйти</a></li>
+				<a href="/posts/add">Добавить пост</a>
+	    		<a href="/profile">Профиль</a>
+				<a href="/auth/signout">Выйти</a>
 			{{else}}
-				<li class="active"><a href="/auth/signin">Войти</a></li>
+			<a href="/auth/signin">Войти</a>
 			{{/if}}
-		  </ul>
+		  
 	  </div>
 	</div>
 </nav>

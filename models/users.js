@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const {Schema, model} = require("mongoose")
 
-const UsersSchema = new mongoose.Schema({
+const UsersSchema = new Schema({
 	email: {
 		type: String,
 		required: true
@@ -12,10 +12,14 @@ const UsersSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true
+	},
+	img: {
+		type: String,
+		default: "https://i.pinimg.com/originals/78/09/98/780998409b52ce6887ce2ed101709033.png"
 	}
 
 },{
 	versionKey: false
 });
 
-module.exports = mongoose.model("users", UsersSchema);
+module.exports = model("users", UsersSchema);

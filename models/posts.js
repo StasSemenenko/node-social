@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
-	title: {
+	post: {
+		type: String,
+		required: true
+	},
+	comment: {
 		type: String,
 		required: true
 	}
