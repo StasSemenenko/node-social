@@ -61,6 +61,10 @@ body {
 }
 /* Конец навбара*/
 
+.brd {
+	border: 1px solid black;
+}
+
 .authpage {
 	border: 1px solid black;
 }
@@ -69,8 +73,8 @@ body {
 	border: 1px solid black;
 }
 /* Страница постов */
-.homepage{
-	border: 1px solid black;
+.card{
+	margin-bottom: 15px;
 }
 
 .comment {
@@ -91,7 +95,7 @@ body {
 	text-align: justify;
 }
 
-/* Страница создания курса */
+/* Страница создания поста */
 .add {
 	border: 1px solid black;
 	padding: 5px;
@@ -101,7 +105,7 @@ body {
 	margin: 5px;
 }
 
-#title {
+.input-field textarea {
 	height: 100px;
 	width: 100%;
 }
@@ -110,4 +114,8 @@ body {
 	height: 100px;
 	width: 100%;
 }
-/* КОнец страницы создания курса */
+/* Конец страницы создания поста */
+
+/* Профиль */
+
+/* Конец профиля */

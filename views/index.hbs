@@ -1,15 +1,23 @@
 <h1>Home page</h1>
 
-<div class="homepage">
- 	<div class="title">
-       {{title}}
-    </div>
-     
-     <div class="comment">
-       {{comment}}
-    </div>
+{{#if posts.length}}
+{{#each posts}}
+<div class="card" >
+   <div class="user_id">
+      {{user_id}}
+   </div>
+   <div class="brd">
+      <p>{{post}}</p>
+   </div>
+   <div class="brd">
+      <p>{{comment}}</p>
+   </div>
+   <div class="date">
+      <p>{{date}}</p>
+   </div>
 	<div class="comment-btn">
 	   <button class="btn btn-primary">Комментировать</button>
-	</div>
-
+   </div>
 </div>
+{{/each}}
+{{/if}}

@@ -3,7 +3,7 @@ const router = express.Router();
 const posts = require("../controllers/posts");
 
 router.get("/", posts.homePage);
-router.get("/add", posts.createPost);
+router.get("/add", posts.postPage);
 
 router.post("/add", posts.createPost);
 

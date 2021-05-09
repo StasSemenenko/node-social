@@ -6,10 +6,9 @@ module.exports = {
 	async homePage(req, res) {
 		try {
 
-			var posts = await Posts.find({});
+			var posts = await Posts.find().sort({ post: - 1}).lean();
 			res.render("index", {
-				title: "Пост",
-				comment: "Это комментарий",
+				posts
 				
 			})
 		}
@@ -21,16 +20,21 @@ module.exports = {
 		var {post, comment } = req.body;
 		try {
 			var new_post = await Posts.create({
-				// user_id: req.cookies.user_id,
+				
+				user_id: res.locals.user_id,
 				post,
-				comment
+				comment,
+				date: new Date()
 			})
 			res.redirect("/");
-			console.log( "KYKYKYKYKYKYKY");
+			console.log( req.body);
 		}
 		catch (e) {
 			console.log(e);
 		}
 		
+	},
+	postPage(req, res) {
+		res.render("add", {})
 	}
 }
