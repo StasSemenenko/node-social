@@ -3,17 +3,20 @@
 {{#if posts.length}}
 {{#each posts}}
 <div class="card" >
-   <div class="user_id">
-      {{user_id}}
+   <div class="post-img">
+      <img src="{{posts.author.img}}">
+   </div>
+   <div class="name">
+      {{name}}
    </div>
    <div class="brd">
-      <p>{{post}}</p>
-   </div>
-   <div class="brd">
-      <p>{{comment}}</p>
+      <p>{{content}}</p>
    </div>
    <div class="date">
-      <p>{{date}}</p>
+      <p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
+   </div>
+   <div>
+      <input>
    </div>
 	<div class="comment-btn">
 	   <button class="btn btn-primary">Комментировать</button>

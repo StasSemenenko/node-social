@@ -1,40 +1,46 @@
 const Posts = require("../models/posts");
 const users = require("../models/users");
+const moment = require("moment");
 
 
 module.exports = {
 	async homePage(req, res) {
 		try {
-
-			var posts = await Posts.find().sort({ post: - 1}).lean();
+			
+			var posts = await Posts.find().sort({ date: - 1}).lean();
 			res.render("index", {
 				posts
 				
 			})
+			console.log(posts.author.img)
 		}
 		catch(e) {
 			res.render("404");
 		}
 	},
 	async createPost(req, res) {
-		var {post, comment } = req.body;
+		var {content} = req.body;
 		try {
+			var name = res.locals.name;
 			var new_post = await Posts.create({
 				
-				user_id: res.locals.user_id,
-				post,
-				comment,
-				date: new Date()
+				author: res.locals.author,
+				name: res.locals.name,
+				content
+
+				
 			})
 			res.redirect("/");
-			console.log( req.body);
+			console.log( res.locals.name);
 		}
 		catch (e) {
 			console.log(e);
 		}
 		
 	},
-	postPage(req, res) {
-		res.render("add", {})
+	async postPage(req, res) {
+		// res.render("post-create");
+		const posts = await Posts.find().populate("author", "-password");
+		res.send(posts);
 	}
 }

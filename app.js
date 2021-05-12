@@ -3,13 +3,17 @@ const cookie_parser = require('cookie-parser');
 const exphbs  = require('express-handlebars');
 const path = require("path");
 const config = require("config");
+const MomentHandler = require("handlebars.moment");
+
 const auth_middleware = require("./middleware/auth");
 const router = require("./routes");
 const app = express();
 require("./database");
 
+const hbs = exphbs.create({extname: '.hbs'});
+MomentHandler.registerHelpers(hbs.handlebars);
 
-app.engine('hbs', exphbs({extname: '.hbs'}));
+app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.use(cookie_parser(config.cookiePassword));
 app.use(auth_middleware);

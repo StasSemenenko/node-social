@@ -32,7 +32,7 @@ module.exports = {
 					name,
 					password
 				})
-				res.cookie("user_id", new_user._id);
+				res.cookie("author", new_user._id);
 				res.cookie("name", new_user.name);
 				res.redirect("/");
 			}
@@ -42,7 +42,7 @@ module.exports = {
 		}
 	},
 	signout(req, res) {
-		res.clearCookie("user_id");
+		res.clearCookie("author");
 		res.clearCookie("name");
 		res.redirect("/");
 	},
@@ -53,7 +53,7 @@ module.exports = {
 			var user = await Users.findOne({ email, password})
 			console.log(user);
 			if (user) {
-				res.cookie("user_id", user._id);
+				res.cookie("author", user._id);
 				res.cookie("name", user.name);
 				res.redirect("/"); 
 			}

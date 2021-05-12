@@ -1,6 +1,6 @@
 module.exports = (req, res, next) => {
-	if(req.cookies.user_id){
-		res.locals.user_id = req.cookies.user_id;
+	if(req.cookies.author){
+		res.locals.author = req.cookies.author;
 		res.locals.name = req.cookies.name;
 		res.locals.is_auth = true;
 	}

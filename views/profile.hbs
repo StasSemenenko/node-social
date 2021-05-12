@@ -1,15 +1,24 @@
 <h1>Profile</h1>
 
 <div class="profile">
-	<div class="profile_photo">
-	Фото
+	<div class="card-profile">
+	  <img src="{{user.img}}" alt="Avatar" style="width:100%">
+	  <div class="card-container">
+	    <h4><b>{{name}}</b></h4> 
+	    <p>Architect & Engineer</p> 
+	  </div>
 	</div>
-	<div class="profile_info">
-		{{name}}
+
+	<div class="profile_posts">
 		Инфо
 	</div>
-	<div class="profile_posts">
-		{{post}}
+</div>
+<div class="profile_posts">
+		{{#if posts.length}}
+		{{#each posts}}
+			<p>{{content}}</p>
+		{{/each}}
+		{{/if}}
 		Посты
 	</div>
-</div>
+

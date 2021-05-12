@@ -31,9 +31,9 @@ body {
     flex-wrap: wrap; 
 }
 
-.brand-logo {
+.nav-wrapper .brand-logo {
 	width: 100px;
-	height: 100%;
+	/* height: 100%; */
 	
 }
 
@@ -52,7 +52,7 @@ body {
 .menu a {
 	color: white;
 	text-decoration: none;
-	/* padding: 10px; */
+	padding: 40px 10px;
 }
 
 .menu  a:hover {
@@ -114,8 +114,36 @@ body {
 	height: 100px;
 	width: 100%;
 }
+
+.validate {
+	resize: none;
+}
 /* Конец страницы создания поста */
 
 /* Профиль */
+.card-profile {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width: 40%;
+  }
+  
+  .card-profile:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card-container {
+	padding: 2px 16px;
+  }
 
+  .profile {
+	display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+
+  }
+
+  .profile_posts {
+	  width: 60%;
+  }
 /* Конец профиля */
