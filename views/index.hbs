@@ -3,23 +3,32 @@
 {{#if posts.length}}
 {{#each posts}}
 <div class="card" >
-   <div class="post-img">
-      <img src="{{posts.author.img}}">
+   <div class="card-top">
+      <div class="post-img">
+         <img src="{{author.img}}">
+      </div>
+      <div class="author">
+         <p>{{author.name}}</p>
+      </div>
+      <div class="date">
+         <p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
+      </div>
    </div>
-   <div class="name">
-      {{name}}
+   <div class="card-center">
+      <div class="name">
+         <h1>{{name}}</h1>
+      </div>
+      <div class="brd">
+         <p>{{content}}</p>
+      </div>
+      <div class="comment">
+
+      </div>
    </div>
-   <div class="brd">
-      <p>{{content}}</p>
-   </div>
-   <div class="date">
-      <p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
-   </div>
-   <div>
-      <input>
-   </div>
-	<div class="comment-btn">
+   <div class="card-bot">
+      <textarea type="text"></textarea>
 	   <button class="btn btn-primary">Комментировать</button>
+
    </div>
 </div>
 {{/each}}

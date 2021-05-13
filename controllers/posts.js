@@ -6,26 +6,26 @@ const moment = require("moment");
 module.exports = {
 	async homePage(req, res) {
 		try {
-			
-			var posts = await Posts.find().sort({ date: - 1}).lean();
+			var posts = await Posts.find().sort({ date: - 1}).populate("author", "-password").lean();
 			res.render("index", {
 				posts
 				
 			})
-			console.log(posts.author.img)
+			posts.forEach(abc => console.log(abc.author.img));
 		}
 		catch(e) {
+			console.log(e);
 			res.render("404");
 		}
 	},
 	async createPost(req, res) {
-		var {content} = req.body;
+		var {content, name} = req.body;
 		try {
-			var name = res.locals.name;
+			
 			var new_post = await Posts.create({
 				
-				author: res.locals.author,
-				name: res.locals.name,
+				author: req.cookies.user_id,
+				name,
 				content
 
 				
@@ -39,8 +39,8 @@ module.exports = {
 		
 	},
 	async postPage(req, res) {
-		// res.render("post-create");
-		const posts = await Posts.find().populate("author", "-password");
-		res.send(posts);
+		res.render("post-create");
+	// 	const posts = await Posts.find().populate("author", "-password");
+	// 	res.send(posts);
 	}
 }

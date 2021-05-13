@@ -73,17 +73,69 @@ body {
 	border: 1px solid black;
 }
 /* Страница постов */
-.card{
+.card {
+	border: 1px solid black;
 	margin-bottom: 15px;
+	padding: 10px;
+	
+}
+
+.card-top {
+	display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+	border-bottom: 1px solid black;
+}
+
+.post-img img {
+	vertical-align: middle;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.card-center  {
+	padding: 5px;
 }
 
 .comment {
 	border: 1px solid black;
+	/* width: 100%; */
+	height: 100px;
+	/* margin: 5px; */
+	padding: 5px;
 }
 
-.comment-btn {
+.brd {
+	/* width: 100%; */
+	height: 100px;
+	margin-bottom: 5px;
+	padding: 5px;
 
 }
+
+.card-bot {
+	display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+	/* margin: 5px; */
+	padding : 5px;
+}
+
+.card-bot textarea {
+	flex: 1;
+	resize: none;
+	margin-right: 5px;
+
+}
+
+
+.card-bot button {
+
+	
+}
+/* Конец страницы постов */
 
 .logpage {
 	border: 1px solid black;
