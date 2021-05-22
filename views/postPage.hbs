@@ -1,0 +1,20 @@
+<img style="width: 50px; height=50px" src="{{post.author.img}}">
+{{post.author.name}}
+{{post.content}}
+{{moment date "DD.MM.YYYY - HH:mm"}}
+{{#if comments.length}}
+{{#each comments}}
+<div style="border: 1px solid black">
+<img style="width: 50px; height=50px" src="{{author.img}}">
+<p>{{author.name}}</p>
+<p>{{comment}}</p>
+<p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
+</div>
+
+{{/each}}
+{{/if}}
+
+<form method="POST" action="/posts/{{post._id}}/comment">
+	<input name="comment">
+	<button>Комментировать</button>
+</form>

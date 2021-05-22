@@ -9,7 +9,7 @@ module.exports = {
 	},
 	signinPage(req, res) {
 		res.render("signin", {
-
+			isAuth: true
 		})
 	},
 	async createAccount(req, res) {
@@ -44,6 +44,7 @@ module.exports = {
 	signout(req, res) {
 		res.clearCookie("author");
 		res.clearCookie("name");
+		res.clearCookie("user_id");
 		res.redirect("/");
 	},
 	async loginAccount(req, res) {

@@ -10,6 +10,7 @@ module.exports = {
 			var user = await Users.findOne({_id: user_id}, {password: 0}).lean();
 			// console.log(user);
 			res.render("profile", {
+				isProfile: true,
 				posts,
 				user
 

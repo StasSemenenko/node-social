@@ -16,19 +16,21 @@
    </div>
    <div class="card-center">
       <div class="name">
-         <h1>{{name}}</h1>
+         <a href="/posts/{{_id}}">{{name}}</a>
       </div>
       <div class="brd">
          <p>{{content}}</p>
       </div>
-      <div class="comment">
+      {{!-- <div class="comment">
 
+      </div> --}}
+      <input type="hidden" name="id" value="{{_id}}">
       </div>
-   </div>
    <div class="card-bot">
-      <textarea type="text"></textarea>
-	   <button class="btn btn-primary">Комментировать</button>
-
+   	<form action="/posts/{{_id}}" method="GET">
+       {{!-- <textarea type="text" name="comment"></textarea> --}}
+   	   <button class="btn btn-primary">Комментировать</button>
+      </form>
    </div>
 </div>
 {{/each}}

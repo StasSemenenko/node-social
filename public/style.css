@@ -5,6 +5,10 @@ body {
 	font-family: "Arial";
 }
 
+.active {
+    background: rgb(231, 120, 45);
+}
+
 .container {
 	width: 500px;
 	margin: auto;

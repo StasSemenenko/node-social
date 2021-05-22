@@ -7,6 +7,7 @@ module.exports = {
 			var users = await Users.find().lean();
 			console.log(users);
 			res.render("users", {
+				isUsers: true,
 				title: "Пользователи2345",
 				users
 			})
