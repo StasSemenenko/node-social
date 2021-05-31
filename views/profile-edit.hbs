@@ -1,0 +1,16 @@
+<h1>Редактирование профиля</h1>
+
+<form action="/profile/edit" method="POST" class="profile-form">
+ 	<div class="input-field">
+        <input id="name" name="name" type="text" value="{{user.name}}">
+        <label for="title">Ваше имя</label>
+    </div>
+
+	<div class="input-field">
+        <input id="info" name="info" type="text" value="{{user.info}}">
+        <label for="info">Введите информацию про Вас</label>
+    </div>
+
+
+	<button type="submit" class="btn btn-primary">Редактировать профиль</button>
+</form>

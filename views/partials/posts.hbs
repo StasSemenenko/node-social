@@ -1,0 +1,32 @@
+{{#if posts.length}}
+{{#each posts}}
+<div class="card" >
+   <div class="card-top">
+      <a href="/users/{{author._id}}">
+         <div class="post-img">
+            <img src="{{author.img}}">
+         </div>
+         <div class="author">
+            <p>{{author.name}}</p>
+         </div>
+      </a> 
+      <div class="date">
+         <p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
+      </div>
+   </div>
+   <div class="card-center">
+      <div class="name">
+         <a href="/posts/{{_id}}">{{name}}</a>
+      </div>
+      <div class="brd">
+         <p>{{content}}</p>
+      </div>
+   </div>
+   <div class="card-bot">
+   	<a href="/posts/{{_id}}">
+         <button class="btn btn-primary">Комментировать</button>
+      </a>
+   </div>
+</div>
+{{/each}}
+{{/if}}

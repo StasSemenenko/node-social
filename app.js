@@ -10,8 +10,9 @@ const router = require("./routes");
 const app = express();
 require("./database");
 
-const hbs = exphbs.create({extname: '.hbs'});
+const hbs = exphbs.create({extname: '.hbs', helpers: require("./helpers")});
 MomentHandler.registerHelpers(hbs.handlebars);
+
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');

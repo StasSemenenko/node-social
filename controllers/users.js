@@ -1,4 +1,5 @@
 const Users = require("../models/users");
+const Posts = require("../models/posts");
 
 
 module.exports = {
@@ -8,12 +9,31 @@ module.exports = {
 			console.log(users);
 			res.render("users", {
 				isUsers: true,
-				title: "Пользователи2345",
+				title: "Пользователи",
 				users
 			})
 		}
 		catch (e) {
 			console.log(e);
+		}
+	},
+	async userPage(req, res) {
+		try {
+			var id = req.params.id;
+			var posts = await Posts.find({author: id}).sort({ date: - 1}).populate("author").lean();
+			var user = await Users.findOne({_id: id}).lean();
+			if(!user) return res.redirect("/404");
+			res.render("profile", {
+				isProfile: true,
+				user,
+				posts
+
+			})
+
+			// res.send(user);
+		}
+		catch (e) {
+			res.redirect("/404");
 		}
 	}
 }

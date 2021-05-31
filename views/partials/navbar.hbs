@@ -9,7 +9,7 @@
 	    	<a href="/users">Пользователи</a>
 			{{#if is_auth}}
 				<a href="/posts/add">Добавить пост</a>
-	    		<a href="/profile">Профиль</a>
+	    		<a href="/users/{{user_id}}">Профиль</a>
 				<a href="/auth/signout">Выйти</a>
 			{{else}}
 			<a href="/auth/signin">Войти</a>

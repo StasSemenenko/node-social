@@ -51,7 +51,7 @@ module.exports = {
 		try {
 			var id = req.params.id;
 			var comments = await Comments.find({post: id}).populate("author").lean();
-			var post = await Posts.findOne({_id: id}).populate("author").lean();
+			var post = await Posts.findOne().populate("author").lean();
 			if(!post) return res.redirect("/");
 			// return res.send({post, comments});
 			res.render("postPage", {

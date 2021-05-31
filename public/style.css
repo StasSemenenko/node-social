@@ -92,6 +92,10 @@ body {
 	border-bottom: 1px solid black;
 }
 
+.date {
+	
+}
+
 .post-img img {
 	vertical-align: middle;
 	width: 50px;
@@ -131,15 +135,37 @@ body {
 	flex: 1;
 	resize: none;
 	margin-right: 5px;
-
+	
 }
 
 
 .card-bot button {
-
 	
 }
 /* Конец страницы постов */
+
+/*Начало пользователей*/
+.users_page {
+	display: flex; 
+    /* justify-content: space-between; 
+    align-items: center;  */
+    /* flex-direction: row; */
+	flex-wrap: wrap;
+}
+
+.one_user {
+	margin: 10px;
+	/* width: 100px;
+	height: 100px; */
+}
+
+.users_img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+/*Кoнец пользователей*/
 
 .logpage {
 	border: 1px solid black;
@@ -196,10 +222,19 @@ body {
     justify-content: space-between; 
     align-items: center; 
     flex-wrap: wrap; 
+	margin-bottom: 20px;
+	/* border-bottom: 1px solid black; */
 
   }
 
-  .profile_posts {
+  .profile_info {
 	  width: 60%;
+	  text-align: center;
   }
 /* Конец профиля */
+
+/* @media screen and (min-width:640px) {
+    .nav-wrapper {
+        display: block;
+    }
+} */

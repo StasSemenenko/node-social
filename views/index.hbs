@@ -1,37 +1,3 @@
 <h1>Home page</h1>
+{{> posts}}
 
-{{#if posts.length}}
-{{#each posts}}
-<div class="card" >
-   <div class="card-top">
-      <div class="post-img">
-         <img src="{{author.img}}">
-      </div>
-      <div class="author">
-         <p>{{author.name}}</p>
-      </div>
-      <div class="date">
-         <p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
-      </div>
-   </div>
-   <div class="card-center">
-      <div class="name">
-         <a href="/posts/{{_id}}">{{name}}</a>
-      </div>
-      <div class="brd">
-         <p>{{content}}</p>
-      </div>
-      {{!-- <div class="comment">
-
-      </div> --}}
-      <input type="hidden" name="id" value="{{_id}}">
-      </div>
-   <div class="card-bot">
-   	<form action="/posts/{{_id}}" method="GET">
-       {{!-- <textarea type="text" name="comment"></textarea> --}}
-   	   <button class="btn btn-primary">Комментировать</button>
-      </form>
-   </div>
-</div>
-{{/each}}
-{{/if}}

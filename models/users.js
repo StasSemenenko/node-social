@@ -17,6 +17,11 @@ const UsersSchema = new Schema({
 	img: {
 		type: String,
 		default: "https://i.pinimg.com/originals/78/09/98/780998409b52ce6887ce2ed101709033.png"
+	},
+	info: {
+		type: String,
+		required: true,
+		default: "Этот пользователь еще не заполнил профиль"
 	}
 
 },{

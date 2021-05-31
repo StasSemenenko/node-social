@@ -13,7 +13,7 @@ module.exports = {
 		})
 	},
 	async createAccount(req, res) {
-		var { email, name, password, password2 } = req.body;
+		var { email, name, password, password2, info} = req.body;
 		if(password !== password2){
 			return res.render("signup", {
 				error: "Пароли не совпадают"
@@ -30,7 +30,8 @@ module.exports = {
 				const new_user = await Users.create({
 					email,
 					name,
-					password
+					password,
+					info
 				})
 				res.cookie("user_id", new_user._id);
 				res.cookie("name", new_user.name);
