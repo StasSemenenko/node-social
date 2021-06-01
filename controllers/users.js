@@ -1,12 +1,14 @@
 const Users = require("../models/users");
 const Posts = require("../models/posts");
+const multer  = require("multer");
+
 
 
 module.exports = {
 	async getUsers(req, res) {
 		try {
 			var users = await Users.find().lean();
-			console.log(users);
+			// console.log(users);
 			res.render("users", {
 				isUsers: true,
 				title: "Пользователи",
@@ -35,5 +37,14 @@ module.exports = {
 		catch (e) {
 			res.redirect("/404");
 		}
+	}, 
+	async upload(req, res, next) { 
+			// let filedata = req.file;
+			// console.log(filedata);
+			// if(!filedata)
+			// 	res.send("Ошибка при загрузке файла");
+			// else
+			// 	res.redirect("/");
+		}
 	}
-}
+

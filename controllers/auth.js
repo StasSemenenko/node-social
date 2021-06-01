@@ -53,7 +53,7 @@ module.exports = {
 			const {email, password} = req.body;
 	
 			var user = await Users.findOne({ email, password})
-			console.log(user);
+			// console.log(user);
 			if (user) {
 				res.cookie("user_id", user._id);
 				res.cookie("name", user.name);

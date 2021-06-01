@@ -3,9 +3,14 @@
 <div class="profile">
 	<div class="card-profile">
 	  <img src="{{user.img}}" alt="Avatar" style="width:100%">
+	  {{!-- <img src="../uploads/Безымянный.jpg" alt="Avatar" style="width:100%"> --}}
+
 	  <div class="card-container">
 	    <h4><b>{{user.name}}</b></h4> 
-	    <p>Architect & Engineer</p> 
+	    <form method="post" action="/upload" enctype="multipart/form-data">
+  			<input type="file" name="filedata" /><br><br>
+ 			<input type="submit" value="Загрузить"/>
+</form>
 	  </div>
 	</div>
 

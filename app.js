@@ -1,4 +1,5 @@
 const express = require("express");
+const multer  = require("multer");
 const cookie_parser = require('cookie-parser');
 const exphbs  = require('express-handlebars');
 const path = require("path");
@@ -21,6 +22,16 @@ app.use(auth_middleware);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use(multer({dest:"uploads"}).single("filedata"));
+app.post("/upload", function (req, res, next) {
+   
+    let filedata = req.file;
+    console.log(filedata);
+    if(!filedata)
+        res.send("Ошибка при загрузке файла");
+    else
+        res.redirect("/");
+});
 app.use(router);
 
 

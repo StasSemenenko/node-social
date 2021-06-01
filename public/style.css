@@ -101,6 +101,8 @@ body {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
+	object-fit: cover;
+
 }
 
 .card-center  {
@@ -202,6 +204,23 @@ body {
 }
 /* Конец страницы создания поста */
 
+/*Начало страницы коментариев*/
+.comment-post {
+	border: 1px solid black;
+	margin-top: 10px;
+
+}
+
+.btn-comment {
+	margin-top: 10px;
+
+}
+
+.btn-comment textarea {
+	resize: none;
+}
+/*Конец страницы комментариев
+*/
 /* Профиль */
 .card-profile {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -230,6 +249,10 @@ body {
   .profile_info {
 	  width: 60%;
 	  text-align: center;
+  }
+
+  .input-info textarea{
+	resize: none;
   }
 /* Конец профиля */
 

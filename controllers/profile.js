@@ -8,7 +8,7 @@ module.exports = {
 	// 		var user_id = req.cookies.user_id;
 	// 		var posts = await Posts.find({author: user_id}).sort({ date: - 1}).populate("author").lean();
 	// 		var user = await Users.findOne({_id: user_id}).lean();
-	// 		// console.log(posts);
+	// 		// (posts);
 	// 		res.render("profile", {
 	// 			isProfile: true,
 	// 			posts,
@@ -37,13 +37,22 @@ module.exports = {
 	async changeProfile(req, res) {
 		try {
 			var id = req.cookies.user_id;
-			var {name, info} = req.body;
-			var update = {name, info};
-			console.log("update:", update, req.body);
+			var {name, info, email, password} = req.body;
+			var update = {name, info, email, password};
+			// if(password = "") password = {{user.password}}
+			// console.log("update:", update, req.body);
 			var user = await Users.updateOne({_id: id}, update);
 			res.redirect(`/users/${id}`);
 		}
 		catch(e) {
+			console.log(e);
+		}
+	}, 
+	async editPhotoProfile(req, res) {
+		try {
+
+		}
+		catch (e) {
 			console.log(e);
 		}
 	}

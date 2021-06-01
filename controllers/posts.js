@@ -50,10 +50,10 @@ module.exports = {
 	async postPage(req, res) {
 		try {
 			var id = req.params.id;
-			var comments = await Comments.find({post: id}).populate("author").lean();
-			var post = await Posts.findOne().populate("author").lean();
+			var comments = await Comments.find({post : id}).populate("author").lean();
+			var post = await Posts.findOne({_id : id}).populate("author").lean();
 			if(!post) return res.redirect("/");
-			// return res.send({post, comments});
+			// return res.send({ post});
 			res.render("postPage", {
 				post,
 				comments
@@ -65,6 +65,7 @@ module.exports = {
 		}
 	},
 	async createComment(req, res) {
+		var id = req.params.id;
 		var {comment} = req.body;
 		try {
 			var new_comment = await Comments.create({
@@ -72,7 +73,7 @@ module.exports = {
 				post: req.params.id,
 				comment: html(comment)
 			})
-			res.redirect("/posts");
+			res.redirect(`/posts/${id}`);
 			
 		}
 		catch (e) {

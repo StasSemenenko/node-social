@@ -6,6 +6,7 @@ const posts = require("./posts");
 const profile = require("./profile");
 const posts_controller = require("../controllers/posts");
 const login = require("../controllers/auth");
+const aut = require("../middleware/auth");
 
 
 

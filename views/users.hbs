@@ -4,9 +4,9 @@
 <div class="users_page">
 {{#each users}}
 <div class="one_user">
-  <p><a href="/users/{{_id}}"><img class="users_img" src="{{img}}"></a></p>
+  <p style="text-align:center"><a  href="/users/{{_id}}"><img class="users_img" src="{{img}}"></a></p>
 
-  <p><a href="/users/{{_id}}">{{name}}</a></p>
+  <p style="text-align:center"><a href="/users/{{_id}}">{{name}}</a></p>
   <input type="hidden" name="id" value="{{_id}}">
   {{!-- <p>{{info}}</p> --}}
 
