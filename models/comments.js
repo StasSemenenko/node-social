@@ -13,6 +13,7 @@ const CommentsSchema = new mongoose.Schema({
 	},
 	comment: {
 		type: String,
+		ref: "posts",
 		required: true
 	},
 	

@@ -24,8 +24,19 @@
    </div>
    <div class="card-bot">
    	<a href="/posts/{{_id}}">
-         <button class="btn btn-primary">Комментировать</button>
+         <button class="btn btn-primary">{{comments}} комментов</button>
+
       </a>
+   	{{#ifeq author._id @root.user_id}}
+         <form action="/posts/{{_id}}" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button class="btn">Редактировать</button>
+         </form>
+         <form action="/posts/remove" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button class="btn red">Удалить</button>
+         </form>
+      {{/ifeq}}
    </div>
 </div>
 {{/each}}

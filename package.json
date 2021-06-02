@@ -8,9 +8,12 @@
     "config": "^3.3.6",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "express-handlebars": "^5.3.0",
     "handlebars.moment": "^1.0.4",
     "htmlspecialchars": "^1.0.5",
+    "imgbb": "^1.0.41",
+    "md5": "^2.3.0",
     "moment": "^2.29.1",
     "mongoose": "^5.12.5",
     "multer": "^1.4.2"

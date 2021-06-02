@@ -2,24 +2,27 @@
 
 <div class="profile">
 	<div class="card-profile">
-	  <img src="{{user.img}}" alt="Avatar" style="width:100%">
-	  {{!-- <img src="../uploads/Безымянный.jpg" alt="Avatar" style="width:100%"> --}}
-
-	  <div class="card-container">
-	    <h4><b>{{user.name}}</b></h4> 
-	    <form method="post" action="/upload" enctype="multipart/form-data">
-  			<input type="file" name="filedata" /><br><br>
- 			<input type="submit" value="Загрузить"/>
-</form>
-	  </div>
+		<img src="{{user.img}}" alt="Avatar" style="width:100%">
+		<div class="card-container">
+		    <h4><b>{{user.name}}</b></h4> 
+			{{#ifeq user._id user_id}}
+			    <form method="POST" action="/profile/photo" enctype="multipart/form-data">
+		  			<input type="file" name="avatar"/><br><br>
+		 			<input type="submit" value="Загрузить"/>
+				</form>
+			{{/ifeq}}	
+	  	</div>
 	</div>
 
 	<div class="profile_info">
 		{{user.info}}
 		{{#ifeq user._id user_id}}
-		<p><a href="/profile/edit">
-   	   <button class="edit-profile btn-primary">Редактировать</button></a></>
-		  {{/ifeq}}
+			<p>
+				<a href="/profile/edit">
+					<button class="edit-profile btn-primary">Редактировать</button>
+				</a>
+			</p>
+		{{/ifeq}}
 	</div>
 </div>
 <div class="profile_posts">

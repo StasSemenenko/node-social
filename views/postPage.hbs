@@ -1,3 +1,4 @@
+
 <div style="border: 1px solid black">
 <img style="width: 50px; height=50px" src="{{post.author.img}}">
 {{post.author.name}}
@@ -7,14 +8,20 @@
 
 {{#if comments.length}}
 {{#each comments}}
-<div class="comment-post">
-<img style="width: 50px; height=50px" src="{{author.img}}">
-{{author.name}}
-{{moment date "DD.MM.YYYY - HH:mm"}}
-<p>{{comment}}</p>
-</div>
-
+	<div class="comment-post">
+		<img style="width: 50px; height=50px" src="{{author.img}}">
+		{{author.name}}
+		{{moment date "DD.MM.YYYY - HH:mm"}}
+		<p>{{comment}}</p>
+	</div>
+	{{#ifeq author._id @root.user_id}}
+		<form action="/posts/{{_id}}/remove" method="GET">
+		    {{!-- <input type="hidden" name="id" value="{{_id}}"> --}}
+		    <button class="btn red">Удалить</button>
+		</form>
+	{{/ifeq}}
 {{/each}}
+
 {{/if}}
 <div class="btn-comment">
 	<form method="POST" action="/posts/{{post._id}}/comment">

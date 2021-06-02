@@ -1,4 +1,5 @@
 const Users = require("../models/users");
+const md5 = require("md5");
 
 
 module.exports = {
@@ -30,7 +31,7 @@ module.exports = {
 				const new_user = await Users.create({
 					email,
 					name,
-					password,
+					password: md5(password),
 					info
 				})
 				res.cookie("user_id", new_user._id);
@@ -52,7 +53,7 @@ module.exports = {
 		try {
 			const {email, password} = req.body;
 	
-			var user = await Users.findOne({ email, password})
+			var user = await Users.findOne({ email, password: md5(password)})
 			// console.log(user);
 			if (user) {
 				res.cookie("user_id", user._id);
