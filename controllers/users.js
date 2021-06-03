@@ -1,5 +1,6 @@
 const Users = require("../models/users");
 const Posts = require("../models/posts");
+const Comments = require("../models/comments");
 const multer  = require("multer");
 
 
@@ -25,6 +26,9 @@ module.exports = {
 			var posts = await Posts.find({author: id}).sort({ date: - 1}).populate("author").lean();
 			var user = await Users.findOne({_id: id}).lean();
 			if(!user) return res.redirect("/404");
+			for (var post of posts) {
+				post.comments = await Comments.countDocuments({post: post._id});
+			}
 			res.render("profile", {
 				isProfile: true,
 				user,

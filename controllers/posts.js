@@ -67,12 +67,8 @@ module.exports = {
 			var {id} = req.params;
 			var {name, content} = req.body;
 			var update = {name, content};
-			var post = await Posts.updateOne({_id: id}, update);
-			console.log("ID:",id)
-			console.log("ID:",name)
-			console.log("ID:",content)
-
-
+			await Posts.updateOne({_id: id}, update);
+			
 			res.redirect("/");
 		}
 		catch(e) {
