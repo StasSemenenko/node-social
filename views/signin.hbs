@@ -3,7 +3,7 @@
 
 <h1>Регистрация</h1>
 
-<div class="logpage">
+<div class="page logpage">
 	<form action="/auth/signin" method="POST">
      	<div class="input">
             <input name="email" type="email" >
@@ -14,6 +14,7 @@
             <input name="password" type="password">
             <label for="password">Введите пароль </label>
         </div>
+</div>
 
     	<button class="btn btn-primary">Войти</button>
         
@@ -21,7 +22,6 @@
             <p>{{error}}</p>
         {{/if}} --}}
 	</form>
-</div>
 
 
 <p>Если у Вас еще нет аккаунта, то  <a href="/auth/signup">зарегистрируйтесь</a>

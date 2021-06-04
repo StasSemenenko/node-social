@@ -1,12 +1,12 @@
 <h1>{{title}}</h1>
 
 {{#if users.length}}
-<div class="users_page">
+<div class="page users">
 {{#each users}}
-<div class="one_user">
-  <p style="text-align:center"><a  href="/users/{{_id}}"><img class="users_img" src="{{img}}"></a></p>
+<div class="user">
+  <p><a href="/users/{{_id}}"><img src="{{img}}"></a></p>
 
-  <p style="text-align:center"><a href="/users/{{_id}}">{{name}}</a></p>
+  <p><a href="/users/{{_id}}">{{name}}</a></p>
   <input type="hidden" name="id" value="{{_id}}">
   {{!-- <p>{{info}}</p> --}}
 

@@ -1,6 +1,6 @@
 
-<div style="border: 1px solid black">
-<img style="width: 50px; height=50px" src="{{post.author.img}}">
+<div class="postPage">
+<img src="{{post.author.img}}">
 {{post.author.name}}
 {{moment post.date "DD.MM.YYYY - HH:mm"}}
 <p>{{post.content}}</p>
@@ -9,7 +9,7 @@
 {{#if comments.length}}
 {{#each comments}}
 	<div class="comment-post">
-		<img style="width: 50px; height=50px" src="{{author.img}}">
+		<img  src="{{author.img}}">
 		{{author.name}}
 		{{moment date "DD.MM.YYYY - HH:mm"}}
 		<p>{{comment}}</p>
@@ -17,13 +17,13 @@
 	{{#ifeq author._id @root.user_id}}
 		<form action="/posts/{{_id}}/remove" method="GET">
 		    {{!-- <input type="hidden" name="id" value="{{_id}}"> --}}
-		    <button class="btn red">Удалить</button>
+		    <button class="btn red"><i class='fa fa-trash'></i></button>
 		</form>
 	{{/ifeq}}
 {{/each}}
 
 {{/if}}
-<div class="btn-comment">
+<div class="btn comment">
 	<form method="POST" action="/posts/{{post._id}}/comment">
 		<textarea name="comment"></textarea>
 		<button>Комментировать</button>

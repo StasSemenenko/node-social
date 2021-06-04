@@ -1,20 +1,18 @@
-<nav>
-	<div class="nav-wrapper">
-	  <div class="img">
-		<a href="/" class="brand-logo">
-			<img class="brand-logo" src="/public/img/logo.PNG"></a>
-	  </div>
-	  <div class="menu">
-			<a href="/">Главная</a>
-	    	<a href="/users">Пользователи</a>
-			{{#if is_auth}}
-				<a href="/posts/add">Добавить пост</a>
-	    		<a href="/users/{{user_id}}">Профиль</a>
-				<a href="/auth/signout">Выйти</a>
-			{{else}}
-			<a href="/auth/signin">Войти</a>
-			{{/if}}
-		  
-	  </div>
-	</div>
-</nav>
+<div class="nav">
+	<a href="/">
+		<img class="brand-logo" src="/public/img/logo.PNG">
+	</a>
+ 	<div class="menu">
+		<a href="/"><i class='fas fa-house-user'></i> Главная</a>
+    	<a href="/users"><i class='fas fa-users'></i>
+		 Пользователи</a>
+		{{#if is_auth}}
+			<a href="/posts/add"><i class='fas fa-edit'></i> Добавить пост</a>
+    		<a href="/users/{{user_id}}"><i class='fas fa-user-tie'></i> Профиль</a>
+			<a href="/auth/signout"><i class='fas fa-sign-out-alt'></i> Выйти</a>
+		{{else}}
+		<a href="/auth/signin"><i class='fas fa-sign-in-alt'></i> Войти</a>
+		{{/if}}
+	  
+  	</div>
+</div>

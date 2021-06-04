@@ -1,6 +1,6 @@
 <h1>Регистрация</h1>
 
-<div class="authpage">
+<div class="page authpage">
 	<form action="/auth/signup" method="POST">
      	<div class="input">
             <input name="email" type="email" >
@@ -22,10 +22,10 @@
             <label for="poassword2">Введите пароль повторно</label>
         </div>
 
+</div>
     	<button class="btn btn-primary">Зарегистрироваться</button>
         
         {{#if error}}
             <p>{{error}}</p>
         {{/if}}
 	</form>
-</div>

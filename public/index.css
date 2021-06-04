@@ -155,13 +155,13 @@ body {
 	flex-wrap: wrap;
 }
 
-.one_user {
+.users_page .one_user {
 	margin: 10px;
 	/* width: 100px;
 	height: 100px; */
 }
 
-.users_img {
+.one_user .users_img {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;

@@ -1,12 +1,13 @@
 <h1>Создать публикацию</h1>
 
-<form action="/posts/add" method="POST" class="add">
-	<div class="heading-post">
-		<p>Введите заголовок поста</p>
-		<input name="name" type="text">
-	</div>
- 	<div class="input-field">
-        <textarea name="content" type="text" class="validate"></textarea>
-	</div>
-	<button type="submit" class="btn btn-primary">Разместить пост</button>
-</form>
+<div class="page post_create">
+	<form action="/posts/add" method="POST" class="add">
+		<div class="head">
+			<textarea name="name" type="text"></textarea><label>Введите заголовок поста</label>
+		</div>
+	 	<div class="input">
+	        <textarea name="content" type="text" class="validate"></textarea><label>Введите содержимое поста</label>
+		</div>
+</div>
+		<button type="submit" class="btn">Разместить пост</button>
+	</form>

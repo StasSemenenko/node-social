@@ -1,9 +1,9 @@
 <h1>Profile</h1>
 
-<div class="profile">
-	<div class="card-profile">
-		<img src="{{user.img}}" alt="Avatar" style="width:100%">
-		<div class="card-container">
+<div class="page profile">
+	<div class="card">
+		<img src="{{user.img}}" alt="Avatar" >
+		<div class="container">
 		    <h4><b>{{user.name}}</b></h4> 
 			{{#ifeq user._id user_id}}
 			    <form method="POST" action="/profile/photo" enctype="multipart/form-data">
@@ -14,7 +14,7 @@
 	  	</div>
 	</div>
 
-	<div class="profile_info">
+	<div class="info">
 		{{user.info}}
 		{{#ifeq user._id user_id}}
 			<p>
@@ -25,7 +25,7 @@
 		{{/ifeq}}
 	</div>
 </div>
-<div class="profile_posts">
+<div class="posts">
 		{{!-- {{#if posts.length}}
 		{{#each posts}}
 			

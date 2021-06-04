@@ -1,7 +1,7 @@
 {{#if posts.length}}
 {{#each posts}}
-<div class="card" >
-   <div class="card-top">
+<div class="posts card" >
+   <div class="top">
       <a href="/users/{{author._id}}">
          <div class="post-img">
             <img src="{{author.img}}">
@@ -14,17 +14,18 @@
          <p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
       </div>
    </div>
-   <div class="card-center">
+   <div class="center">
       <div class="name">
          <a href="/posts/{{_id}}">{{name}}</a>
       </div>
-      <div class="brd">
+      <div class="content">
          <p>{{content}}</p>
       </div>
    </div>
-   <div class="card-bot">
+   <div class="bot">
    	<a href="/posts/{{_id}}">
-         <button class="btn btn-primary">{{comments}} комментов</button>
+        <i class="far fa-comment"></i>
+         <label>{{comments}}</label>
       </a>
    	{{#ifeq author._id @root.user_id}}
          <form action="/posts/{{_id}}" method="POST">
@@ -33,7 +34,7 @@
          </form>
          <form action="/posts/remove" method="POST">
             <input type="hidden" name="id" value="{{_id}}">
-            <button class="btn red">Удалить</button>
+            <button class="btn red"><i class='fa fa-trash'></i></button>
          </form>
       {{/ifeq}}
    </div>
