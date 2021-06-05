@@ -3,13 +3,13 @@
 <div class="page post-edit">
     <form action="/posts/{{post._id}}/edit" method="POST" class="profile-form">
      	<div class="name">
+            <p>Название поста</p>
             <input id="name" name="name" type="text" value="{{post.name}}">
-            <label for="title">Название поста</label>
         </div>
 
     	<div class="content">
+             <p for="info">Контент</p>
             <textarea id="content" name="content" type="text" >{{post.content}}</textarea>
-            <label for="info">Контент</label>
         </div>
 </div>
     	<button type="submit" class="btn btn-primary">Редактировать пост</button>

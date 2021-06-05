@@ -7,8 +7,9 @@
 		    <h4><b>{{user.name}}</b></h4> 
 			{{#ifeq user._id user_id}}
 			    <form method="POST" action="/profile/photo" enctype="multipart/form-data">
-		  			<input type="file" name="avatar"/><br><br>
+		  			<button class="my_btn" onclick="click()" type="button">Открыть фото</button><br><br>
 		 			<input type="submit" value="Загрузить"/>
+		  			<input class="hidden" id="file" type="file" name="avatar"/><br><br>
 				</form>
 			{{/ifeq}}	
 	  	</div>
@@ -25,16 +26,22 @@
 		{{/ifeq}}
 	</div>
 </div>
-<div class="posts">
-		{{!-- {{#if posts.length}}
-		{{#each posts}}
-			
-			<p>{{posts.name}}</p>
-			<p>{{content}}</p>
-			<p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
-		{{/each}}
-		{{/if}}
-		Посты --}}
-		{{> posts}}
-	</div>
 
+<div class="posts">
+	{{!-- {{#if posts.length}}
+	{{#each posts}}
+		
+		<p>{{posts.name}}</p>
+		<p>{{content}}</p>
+		<p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
+	{{/each}}
+	{{/if}}
+	Посты --}}
+	{{> posts}}
+</div>
+
+<script> 
+	document.querySelector(".my_btn").onclick = () => {
+		document.querySelector("#file").click();
+	};
+</script>

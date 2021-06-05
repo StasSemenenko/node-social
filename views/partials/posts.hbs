@@ -1,43 +1,49 @@
 {{#if posts.length}}
 {{#each posts}}
 <div class="posts card" >
-   <div class="top">
-      <a href="/users/{{author._id}}">
-         <div class="post-img">
-            <img src="{{author.img}}">
-         </div>
-         <div class="author">
-            <p>{{author.name}}</p>
-         </div>
-      </a> 
-      <div class="date">
-         <p>{{moment date "DD.MM.YYYY - HH:mm"}}</p>
-      </div>
-   </div>
-   <div class="center">
-      <div class="name">
-         <a href="/posts/{{_id}}">{{name}}</a>
-      </div>
-      <div class="content">
-         <p>{{content}}</p>
-      </div>
-   </div>
-   <div class="bot">
-   	<a href="/posts/{{_id}}">
-        <i class="far fa-comment"></i>
-         <label>{{comments}}</label>
-      </a>
-   	{{#ifeq author._id @root.user_id}}
-         <form action="/posts/{{_id}}" method="POST">
-            <input type="hidden" name="id" value="{{_id}}">
-            <button class="btn">Редактировать</button>
-         </form>
-         <form action="/posts/remove" method="POST">
-            <input type="hidden" name="id" value="{{_id}}">
-            <button class="btn red"><i class='fa fa-trash'></i></button>
-         </form>
-      {{/ifeq}}
-   </div>
+	<div class="top">
+		<a href="/users/{{author._id}}">
+			<div class="author-img">
+				<img src="{{author.img}}">
+			</div>
+		</a> 
+
+		<div class="info">
+			<a href="/users/{{author._id}}">
+				{{author.name}}
+			</a>
+			<div class="date">
+				{{moment date "DD.MM.YYYY - HH:mm"}}
+			</div>
+		</div>
+
+		<div class="buttons">
+			{{#ifeq author._id @root.user_id}}
+			<form action="/posts/{{_id}}" method="POST">
+				<input type="hidden" name="id" value="{{_id}}">
+				<button class="btn">Редактировать</button>
+			</form>
+			<form action="/posts/remove" method="POST">
+				<input type="hidden" name="id" value="{{_id}}">
+				<button class="btn red"><i class='fa fa-trash'></i></button>
+			</form>
+			{{/ifeq}}
+		</div>
+	</div>
+	<div class="center">
+		<div class="name">
+			<a href="/posts/{{_id}}">{{name}}</a>
+		</div>
+		<div class="content">
+			{{content}}
+		</div>
+	</div>
+	<div class="bot">
+		<a href="/posts/{{_id}}">
+		  <i class="far fa-comment"></i>
+			<label>{{comments}}</label>
+		</a>
+	</div>
 </div>
 {{/each}}
 {{/if}}

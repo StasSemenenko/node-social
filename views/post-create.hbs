@@ -2,12 +2,12 @@
 
 <div class="page post_create">
 	<form action="/posts/add" method="POST" class="add">
-		<div class="head">
-			<textarea name="name" type="text"></textarea><label>Введите заголовок поста</label>
-		</div>
-	 	<div class="input">
-	        <textarea name="content" type="text" class="validate"></textarea><label>Введите содержимое поста</label>
-		</div>
-</div>
+		<p>Введите заголовок поста</p>
+		<input name="name" type="text">
+
+		<p>Введите содержимое поста</p>
+	    <textarea rows="10" name="content" type="text" class="validate"></textarea>
+
 		<button type="submit" class="btn">Разместить пост</button>
 	</form>
+</div>
