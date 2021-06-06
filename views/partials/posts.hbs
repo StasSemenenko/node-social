@@ -21,18 +21,18 @@
 			{{#ifeq author._id @root.user_id}}
 			<form action="/posts/{{_id}}" method="POST">
 				<input type="hidden" name="id" value="{{_id}}">
-				<button class="btn">Редактировать</button>
+				<button class="btn fas fa-edit"></button>
 			</form>
 			<form action="/posts/remove" method="POST">
 				<input type="hidden" name="id" value="{{_id}}">
-				<button class="btn red"><i class='fa fa-trash'></i></button>
+				<button style="width: 32px" class="btn red"><i class='fa fa-trash'></i></button>
 			</form>
 			{{/ifeq}}
 		</div>
 	</div>
 	<div class="center">
-		<div class="name">
-			<a href="/posts/{{_id}}">{{name}}</a>
+		<div style="background-color:{{color_fon}}" class="name">
+			<a style="color:{{color_text}}" href="/posts/{{_id}}">{{name}} </a>
 		</div>
 		<div class="content">
 			{{content}}

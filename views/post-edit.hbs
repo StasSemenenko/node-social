@@ -2,15 +2,18 @@
 
 <div class="page post-edit">
     <form action="/posts/{{post._id}}/edit" method="POST" class="profile-form">
-     	<div class="name">
-            <p>Название поста</p>
-            <input id="name" name="name" type="text" value="{{post.name}}">
-        </div>
+ 		<p>Введите заголовок поста </p>
+            <input class="name" name="name" type="text" value="{{post.name}}">
+        <div>
+			<p>Выберите цвет текста</p>
+			<input class="color-text" name="color_text" type="color" value="{{post.color_text}}">
+			<p>Выберите цвет фона</p>
+			<input class="color-fon" name="color_fon" type="color" value="{{post.color_fon}}">
+		</div>
 
-    	<div class="content">
-             <p for="info">Контент</p>
-            <textarea id="content" name="content" type="text" >{{post.content}}</textarea>
-        </div>
-</div>
+    	<p>Введите содержимое поста</p>
+	    <textarea rows="10" name="content" type="text" class="validate">{{post.content}}</textarea>
+
     	<button type="submit" class="btn btn-primary">Редактировать пост</button>
     </form>
+</div>

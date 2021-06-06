@@ -2,8 +2,14 @@
 
 <div class="page post_create">
 	<form action="/posts/add" method="POST" class="add">
-		<p>Введите заголовок поста</p>
-		<input name="name" type="text">
+		<p>Введите заголовок поста </p>
+		<input class="name" name="name" type="text">
+		<div>
+			<p>Выберите цвет текста</p>
+			<input class="color-text" name="color_text" type="color">
+			<p>Выберите цвет фона</p>
+			<input class="color-fon" name="color_fon" type="color">
+		</div>
 
 		<p>Введите содержимое поста</p>
 	    <textarea rows="10" name="content" type="text" class="validate"></textarea>

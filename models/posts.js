@@ -10,6 +10,14 @@ const PostSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	color_text: {
+		type: String,
+		required: true
+	},
+	color_fon: {
+		type: String,
+		required: true
+	},
 	content: {
 		type: String,
 		required: true

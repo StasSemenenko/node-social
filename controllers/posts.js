@@ -29,20 +29,22 @@ module.exports = {
 		}
 	},
 	async createPost(req, res) {
-		var {content, name} = req.body;
+		var {content, name, color_text, color_fon} = req.body;
 		try {
-			
+			console.log(name, content, color_text, color_fon);
 			var new_post = await Posts.create({
 				isAdd: true,
 				author: req.cookies.user_id,
 				name,
-				content
+				content,
+				color_text,
+				color_fon
 
 				
 			})
 			res.redirect("/");
 			res.locals.post_id = req.cookies.user_id;
-			// console.log( new_post._id);
+			// console.log(name, content, color);
 		}
 		catch (e) {
 			console.log(e);
@@ -65,8 +67,8 @@ module.exports = {
 	async changePost(req, res) {
 		try {
 			var {id} = req.params;
-			var {name, content} = req.body;
-			var update = {name, content};
+			var {name, content, color_text, color_fon} = req.body;
+			var update = {name, content, color_text, color_fon};
 			await Posts.updateOne({_id: id}, update);
 			
 			res.redirect("/");

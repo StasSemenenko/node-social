@@ -4,9 +4,14 @@
 <div class="page users">
 {{#each users}}
 <div class="user">
-  <p><a title="{{info}}" href="/users/{{_id}}"><img src="{{img}}"></a></p>
-  <p data-tooltip="{{info}}"><a href="/users/{{_id}}">{{name}} </a></p>
-  <input type="hidden" name="id" value="{{_id}}">
+    <div class="img">
+      <p><a href="/users/{{_id}}"><img src="{{img}}"></a></p>
+      <p>{{name}}</p>
+    </div>
+    <div class="info">
+      <p>{{info}}</p>
+    </div>
+    <input type="hidden" name="id" value="{{_id}}">
   {{!-- <p>{{info}}</p> --}}
 
 </div>

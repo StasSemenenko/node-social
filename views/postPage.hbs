@@ -1,10 +1,45 @@
 
 <div class="postPage">
-<img src="{{post.author.img}}">
-{{post.author.name}}
-{{moment post.date "DD.MM.YYYY - HH:mm"}}
-<p>{{post.content}}</p>
-</div>
+	<div class="posts card" >
+		<div class="top">
+			<a href="/users/{{post.author._id}}">
+				<img src="{{post.author.img}}">
+			</a> 
+			<div class="info">
+				<a href="/users/{{post.author._id}}">
+					{{post.author.name}}
+				</a>
+				<div class="date">
+					{{moment post.date "DD.MM.YYYY - HH:mm"}}
+				</div>
+			</div>
+
+			<div class="buttons">
+				{{#ifeq post.author._id @root.user_id}}
+				<form action="/posts/{{post._id}}" method="POST">
+					<input type="hidden" name="id" value="{{post._id}}">
+					<button class="btn fas fa-edit"></button>
+				</form>
+				<form action="/posts/remove" method="POST">
+					<input type="hidden" name="id" value="{{_id}}">
+					<button style="width: 32px" class="btn red fa fa-trash"></button>
+				</form>
+				{{/ifeq}}
+			</div>
+		</div>
+
+			<div class="center">
+				<div style="background-color:{{post.color_fon}}" class="name">
+					<a style="color:{{color_text}}" href="/posts/{{_id}}">{{post.name}} </a>
+				</div>
+
+				<div class="content">
+					{{post.content}}
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 {{#if comments.length}}
 {{#each comments}}

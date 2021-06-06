@@ -3,6 +3,7 @@
 	// overflow:hidden;
 }
 
+
 html, body {
 	padding: 0;
 	margin: 0;
@@ -92,7 +93,25 @@ a {
 	}
 }
 .postPage {
-	border: 1px solid black;
+	// border: 1px solid black;
+	.top {
+		display: flex; 
+    	justify-content: space-between; 
+	    align-items: center; 
+	    flex-wrap: wrap; 
+		border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+		padding: 15px;
+		.info {
+			flex: 1;
+		    justify-content: space-between;
+			text-align: top;
+			padding-left: 10px;
+			
+			.date {
+				opacity: 0.25;
+			}
+		}
+	}
 	img {
 		width: 50px; 
 		height: 50px;
@@ -126,7 +145,7 @@ a {
     	justify-content: space-between; 
 	    align-items: center; 
 	    flex-wrap: wrap; 
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 		padding: 15px;
 		
 		.info {
@@ -180,13 +199,23 @@ a {
 }
 
 .page.users {
-	display: flex; 
-	flex-wrap: wrap;
+	// display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+	// border: 1px solid rgba(0, 0, 0, 0.15);
+
+	// padding : 5px;
 	.user {
-		margin: 10px;
-		p {
-			text-align: center;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+	    margin-bottom: 15px;
+	    border-radius: 10px;
+	    background-color: white;
+	    // box-shadow: 0 4px 15px rgb(0 0 0 / 20%);
+		border-radius: 10px;
+		.info {
+			// border: 1px solid rgba(0, 0, 0, 0.15);
 		}
+		
 		img {
 			width: 100px;
 			height: 100px;
@@ -201,7 +230,7 @@ a {
 	padding: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
-	textarea, input {
+	.name, textarea {
 		border-radius: 6px;
 		border: 1px solid rgba(0, 0, 0, 0.25);
 		background: rgba(0, 0, 0, 0.03);
@@ -210,6 +239,17 @@ a {
 		padding: 10px;
 		resize: none;
 	}	
+	div {
+		display: flex; 
+	    justify-content: space-between; 
+	    align-items: center; 
+		padding : 5px;
+		.color-text, .color-fon {
+			border-radius: 6px;
+			border: 1px solid rgba(0, 0, 0, 0.25);
+		}
+	}
+	
 }
 
 .page.profile {
@@ -261,19 +301,27 @@ a {
 }
 
 .page.post-edit {
-	border: 1px solid black;
-	.name {
-		input {
-			width: 450px;
-			margin: 5px;
-		}
-	}
-	.content {
-		textarea {
-			width: 450px;
-			height: 400px;
-			@extend %textar;
-			margin: 5px;
+	background-color: white;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	.name, textarea {
+		border-radius: 6px;
+		border: 1px solid rgba(0, 0, 0, 0.25);
+		background: rgba(0, 0, 0, 0.03);
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+		resize: none;
+	}	
+	div {
+		display: flex; 
+	    justify-content: space-between; 
+	    align-items: center; 
+		padding : 5px;
+		.color-text, .color-fon {
+			border-radius: 6px;
+			border: 1px solid rgba(0, 0, 0, 0.25);
 		}
 	}
 }
