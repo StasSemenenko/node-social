@@ -5,7 +5,7 @@
 		    <h4><b>{{user.name}}</b></h4> 
 			{{#ifeq user._id user_id}}
 			    <form method="POST" action="/profile/photo" enctype="multipart/form-data">
-		  			<button class="my_btn" onclick="click()" type="button">Открыть фото</button><br><br>
+		  			<button class="my_btn" onclick="click()" type="button">Выбрать фото</button><br><br>
 		 			<input type="submit" value="Загрузить"/>
 		  			<input class="hidden" id="file" type="file" name="avatar"/><br><br>
 				</form>

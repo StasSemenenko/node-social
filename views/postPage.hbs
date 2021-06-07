@@ -16,14 +16,12 @@
 
 			<div class="buttons">
 				{{#ifeq post.author._id @root.user_id}}
-				<form action="/posts/{{post._id}}" method="POST">
-					<input type="hidden" name="id" value="{{post._id}}">
-					<button class="btn fas fa-edit"></button>
-				</form>
-				<form action="/posts/remove" method="POST">
-					<input type="hidden" name="id" value="{{_id}}">
-					<button style="width: 32px" class="btn red fa fa-trash"></button>
-				</form>
+					<a href="/posts/{{post._id}}/edit">
+						<button class="btn fas fa-edit"></button>
+					</a>
+					<a href="/posts/{{post._id}}/remove">
+						<button style="width: 32px" class="btn red fa fa-trash"></button>
+					</a>
 				{{/ifeq}}
 			</div>
 		</div>

@@ -19,14 +19,14 @@
 
 		<div class="buttons">
 			{{#ifeq author._id @root.user_id}}
-			<form action="/posts/{{_id}}" method="POST">
-				<input type="hidden" name="id" value="{{_id}}">
+			<a href="/posts/{{_id}}/edit">
 				<button class="btn fas fa-edit"></button>
-			</form>
-			<form action="/posts/remove" method="POST">
-				<input type="hidden" name="id" value="{{_id}}">
-				<button style="width: 32px" class="btn red"><i class='fa fa-trash'></i></button>
-			</form>
+			</a>
+			<a href="/posts/{{_id}}/remove">
+				<button class="btn red fas fa-trash"></button>
+			</a>
+			
+			
 			{{/ifeq}}
 		</div>
 	</div>
@@ -47,3 +47,9 @@
 </div>
 {{/each}}
 {{/if}}
+
+<script>
+	const str = document.querySelector(".content");
+	str.substr(0[, 250]);
+	console.log(str);
+</script>

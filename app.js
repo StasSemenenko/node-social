@@ -5,7 +5,6 @@ const exphbs  = require('express-handlebars');
 const path = require("path");
 const config = require("config");
 const MomentHandler = require("handlebars.moment");
-
 const auth_middleware = require("./middleware/auth");
 const file_middleware = require("./middleware/file");
 const router = require("./routes");
@@ -14,6 +13,7 @@ require("./database");
 
 const hbs = exphbs.create({extname: '.hbs', helpers: require("./helpers")});
 MomentHandler.registerHelpers(hbs.handlebars);
+
 
 
 app.engine('hbs', hbs.engine);

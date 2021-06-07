@@ -31,7 +31,7 @@ module.exports = {
 	async createPost(req, res) {
 		var {content, name, color} = req.body;
 		try {
-			console.log(name, content, color);
+			// console.log(name, content, color);
 			var new_post = await Posts.create({
 				isAdd: true,
 				author: req.cookies.user_id,
@@ -50,9 +50,9 @@ module.exports = {
 		}
 		
 	},
-	async editPost(req, res) {
+	async editPostPage(req, res) {
 		try{
-			var {id} = req.body;
+			var id = req.params.id;
 			if (!id) return res.redirect("/");
 			var post = await Posts.findOne({_id: id}).lean();
 			res.render("post-edit", {
@@ -63,7 +63,7 @@ module.exports = {
 			console.log(e);
 		}
 	},
-	async changePost(req, res) {
+	async updatePost(req, res) {
 		try {
 			var {id} = req.params;
 			var {name, content, color} = req.body;
@@ -77,8 +77,7 @@ module.exports = {
 		}
 	}, 
 	async removePost(req, res) {
-		var post_id = req.params.id;
-		var {id} = req.body;
+		var id = req.params.id;
 		// console.log("id:", id)
 		try {
 			await Posts.deleteOne({ _id : id});
