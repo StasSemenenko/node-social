@@ -3,6 +3,7 @@ pm2 stop StasSocial --silent
 
 echo "Installing..."
 npm install
+npm run mscss
 echo "Install success"
 
 echo "Running..."

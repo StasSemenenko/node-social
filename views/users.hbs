@@ -1,21 +1,22 @@
-<h1>{{title}}</h1>
 
 {{#if users.length}}
 <div class="page users">
+  <div class="search">
+    <input id="search" name="search" placeholder="Искать здесь..." type="search">
+  </div>
 {{#each users}}
 <div class="user">
     <div class="img">
       <p><a href="/users/{{_id}}"><img src="{{img}}"></a></p>
-      <p>{{name}}</p>
     </div>
     <div class="info">
+      <p><a href="/users/{{_id}}">{{name}}</a></p>
       <p>{{info}}</p>
     </div>
     <input type="hidden" name="id" value="{{_id}}">
   {{!-- <p>{{info}}</p> --}}
 
 </div>
-
 
 {{/each}}
 </div>

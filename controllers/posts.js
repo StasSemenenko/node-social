@@ -29,16 +29,15 @@ module.exports = {
 		}
 	},
 	async createPost(req, res) {
-		var {content, name, color_text, color_fon} = req.body;
+		var {content, name, color} = req.body;
 		try {
-			console.log(name, content, color_text, color_fon);
+			console.log(name, content, color);
 			var new_post = await Posts.create({
 				isAdd: true,
 				author: req.cookies.user_id,
 				name,
 				content,
-				color_text,
-				color_fon
+				color
 
 				
 			})
@@ -67,8 +66,8 @@ module.exports = {
 	async changePost(req, res) {
 		try {
 			var {id} = req.params;
-			var {name, content, color_text, color_fon} = req.body;
-			var update = {name, content, color_text, color_fon};
+			var {name, content, color} = req.body;
+			var update = {name, content, color};
 			await Posts.updateOne({_id: id}, update);
 			
 			res.redirect("/");

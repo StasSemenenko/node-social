@@ -22,7 +22,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
-    "scss": "node-sass public/style.scss public/style.css -w"
+    "scss": "node-sass public/style.scss public/style.css -w",
+    "mscss": "node-sass public/style.scss public/style.css"
   },
   "keywords": [],
   "author": "",
