@@ -3,15 +3,15 @@
 		<img class="brand-logo" src="/public/img/logo.PNG">
 	</a>
  	<div class="menu">
-		<a href="/"><i class='fas fa-house-user'></i> Главная</a>
+		<a href="/"><i class='fas fa-house-user'></i> <span>Главная</span></a>
     	<a href="/users"><i class='fas fa-users'></i>
-		 Пользователи</a>
+		 <span>Пользователи</span></a>
 		{{#if is_auth}}
-			<a href="/posts/add"><i class='fas fa-edit'></i> Добавить пост</a>
-    		<a href="/users/{{user_id}}"><i class='fas fa-user-tie'></i> Профиль</a>
-			<a href="/auth/signout"><i class='fas fa-sign-out-alt'></i> Выйти</a>
+			<a href="/posts/add"><i class='fas fa-edit'></i> <span>Добавить пост</span></a>
+    		<a href="/users/{{user_id}}"><i class='fas fa-user-tie'></i><span> Профиль</span></a>
+			<a href="/auth/signout"><i class='fas fa-sign-out-alt'></i> <span>Выйти</span></a>
 		{{else}}
-		<a href="/auth/signin"><i class='fas fa-sign-in-alt'></i> Войти</a>
+		<a href="/auth/signin"><i class='fas fa-sign-in-alt'></i> <span>Войти</span></a>
 		{{/if}}
 	  
   	</div>

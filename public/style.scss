@@ -372,7 +372,7 @@ a {
 
 @media screen and (max-width : 600px) {
 	.container {
-		// width: 300px;
+		width: initial;
 		margin: auto;
 		// background-color: white;
 		padding: 20px;
@@ -380,10 +380,14 @@ a {
 	}
 	.nav {
 		background-color: rgb(255, 127, 39);
-		width: 512px;
+		// width: 512px;
 		display: flex; 
 		justify-content: space-between; 
 		align-items: stretch; 
-		flex-wrap: wrap; 
+		flex-wrap: wrap;
+		font-size: 5.5vw;
+		span {
+			display: none;
+		} 
 	}
 }

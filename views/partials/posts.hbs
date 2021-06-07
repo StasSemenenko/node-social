@@ -35,7 +35,11 @@
 			<a href="/posts/{{_id}}">{{name}} </a>
 		</div>
 		<div class="content">
-			{{content}}
+			{{#ifCond content.length ">" 150}}
+				{{trimString content 0 150}}...
+			{{else}}
+				{{content}}
+			{{/ifCond}}
 		</div>
 	</div>
 	<div class="bot">
@@ -47,9 +51,3 @@
 </div>
 {{/each}}
 {{/if}}
-
-<script>
-	const str = document.querySelector(".content");
-	str.substr(0[, 250]);
-	console.log(str);
-</script>
