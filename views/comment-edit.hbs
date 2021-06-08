@@ -1,0 +1,10 @@
+<h1>Редактирование комментария</h1>
+
+<div class="page comment-edit">
+    <form action="/posts/comment/{{comment._id}}/edit" method="POST" class="profile-form">
+    	<p>Введите содержимое комментария</p>
+	    <textarea rows="10" name="comment" type="text" class="validate">{{comment.comment}}</textarea>
+
+    	<button type="submit" class="btn btn-primary">Редактировать комментарий</button>
+    </form>
+</div>

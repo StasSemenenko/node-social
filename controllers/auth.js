@@ -34,8 +34,8 @@ module.exports = {
 					password: md5(password),
 					info
 				})
-				res.cookie("user_id", new_user._id);
-				res.cookie("name", new_user.name);
+				res.cookie("user_id", new_user._id, { expires: new Date(Date.now() + 900000)});
+				res.cookie("name", new_user.name, { expires: new Date(Date.now() + 900000)});
 				res.redirect("/");
 			}
 		}
@@ -56,8 +56,8 @@ module.exports = {
 			var user = await Users.findOne({ email, password: md5(password)})
 			// console.log(user);
 			if (user) {
-				res.cookie("user_id", user._id);
-				res.cookie("name", user.name);
+				res.cookie("user_id", user._id, { expires: new Date(Date.now() + 31536000000.42889)});
+				res.cookie("name", user.name, { expires: new Date(Date.now() + 31536000000.42889)});
 				res.redirect("/"); 
 			}
 			else {

@@ -55,6 +55,8 @@ module.exports = {
 			var id = req.params.id;
 			if (!id) return res.redirect("/");
 			var post = await Posts.findOne({_id: id}).lean();
+			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
+			
 			res.render("post-edit", {
 				post
 			});
@@ -68,9 +70,11 @@ module.exports = {
 			var {id} = req.params;
 			var {name, content, color} = req.body;
 			var update = {name, content, color};
+			var post = await Posts.findOne({_id: id});
+			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			await Posts.updateOne({_id: id}, update);
-			
 			res.redirect("/");
+			
 		}
 		catch(e) {
 			console.log(e);
@@ -80,6 +84,8 @@ module.exports = {
 		var id = req.params.id;
 		// console.log("id:", id)
 		try {
+			var post = await Posts.findOne({_id: id});
+			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			await Posts.deleteOne({ _id : id});
 			await Comments.deleteMany({post: id});
 			res.redirect(req.get('referer'));
@@ -92,9 +98,10 @@ module.exports = {
 	async removeComment(req, res) {
 		var id = req.params.id;
 		try {
-			// await Posts.deleteOne({ _id : id});
+			var comment = await Comments.findOne({_id : id}).lean();
+			if (comment.author.toString() != req.cookies.user_id) return res.redirect("/");
 			await Comments.deleteOne({_id: id});
-			res.redirect('back');
+			res.redirect(req.get('referer'));
 		}
 		catch(e) {
 			console.log(e);
@@ -102,8 +109,8 @@ module.exports = {
 	},
 	async createPostPage(req, res) {
 		res.render("post-create");
-	// 	const posts = await Posts.find().populate("author", "-password");
-	// 	res.send(posts);
+		// const posts = await Posts.find().populate("author", "-password");
+		// res.send(posts);
 	},
 	async postPage(req, res) {
 		try {
@@ -137,6 +144,39 @@ module.exports = {
 		catch (e) {
 			console.log(e);
 		}
-	}
-
+	},
+	async editCommentPage(req, res) {
+		try{
+			var {post_id} = req.body
+			var id = req.params.id;
+			if (!id) return res.redirect("/");
+			var comment = await Comments.findOne({_id: id}).lean();
+			if (comment.author._id.toString() != req.cookies.user_id) return res.redirect("/");
+			res.cookie("post_id", post_id);
+			res.render("comment-edit", {
+				comment
+			});
+		}
+		catch(e) {
+			console.log(e);
+		}
+	},
+	async editComment(req, res) {
+		try {
+			var post_id = req.cookies.post_id;
+			var {id} = req.params;
+			var {comment} = req.body;
+			var update = {comment};
+			var comment = await Comments.findOne({_id: id});
+			if (comment.author._id.toString() != req.cookies.user_id) return res.redirect("/");
+			console.log(post_id)
+			await Comments.updateOne({_id: id}, update);
+			res.redirect("/");
+			res.clearCookie("post_id");
+			
+		}
+		catch(e) {
+			console.log(e);
+		}
+	},
 }

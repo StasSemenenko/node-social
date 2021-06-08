@@ -2,6 +2,7 @@
 <div class="postPage">
 	<div class="posts card" >
 		<div class="top">
+			<input type="hidden" name="post_id" value="{{post._id}}">
 			<a href="/users/{{post.author._id}}">
 				<img src="{{post.author.img}}">
 			</a> 
@@ -42,17 +43,43 @@
 {{#if comments.length}}
 {{#each comments}}
 	<div class="comment-post">
-		<img  src="{{author.img}}">
-		{{author.name}}
-		{{moment date "DD.MM.YYYY - HH:mm"}}
-		<p>{{comment}}</p>
+		<div class="top">
+			<a href="/users/{{author._id}}">
+				<div class="author-img">
+					<img src="{{author.img}}">
+				</div>
+			</a> 
+			<div class="info">
+				<a href="/users/{{author._id}}">
+					{{author.name}}
+				</a>
+				<div class="date">
+					{{moment date "DD.MM.YYYY - HH:mm"}}
+				</div>
+			</div>
+
+			<div class="buttons">
+				{{#ifeq author._id @root.user_id}}
+				<a href="/posts/comment/{{_id}}/edit">	
+					<button class="btn fas fa-edit"></button>
+				</a>
+				<a href="comment/{{_id}}/remove">
+					<button class="btn red fas fa-trash"></button>
+				</a>
+				{{/ifeq}}
+			</div>
+		</div>
+
+			<div class="center">
+				<div class="content">
+					{{#ifCond content.length ">" 150}}
+						{{trimString content 0 150}}...
+					{{else}}
+						{{comment}}
+					{{/ifCond}}
+				</div>
+			</div>
 	</div>
-	{{#ifeq author._id @root.user_id}}
-		<form action="/posts/{{_id}}/remove" method="GET">
-		    {{!-- <input type="hidden" name="id" value="{{_id}}"> --}}
-		    <button class="btn red"><i class='fa fa-trash'></i></button>
-		</form>
-	{{/ifeq}}
 {{/each}}
 
 {{/if}}

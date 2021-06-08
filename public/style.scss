@@ -115,6 +115,7 @@ a {
 	img {
 		width: 50px; 
 		height: 50px;
+		object-fit: cover;
 	}
 }
 
@@ -124,6 +125,7 @@ a {
 	img {
 		width: 50px; 
 		height: 50px;
+		object-fit: cover;
 	}
 }
 
@@ -199,6 +201,63 @@ a {
 		}
 	}
 }
+
+.comment-post {
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	margin-bottom: 15px;
+	border-radius: 10px;
+	background-color: rgb(236, 229, 229);
+	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	
+	.top {
+		display: flex; 
+    	justify-content: space-between; 
+	    align-items: center; 
+	    flex-wrap: wrap; 
+		border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+		padding: 15px;
+		
+		.info {
+			flex: 1;
+		    justify-content: space-between;
+			text-align: top;
+			padding-left: 10px;
+			
+			.date {
+				opacity: 0.25;
+			}
+		}
+		
+		img {
+			vertical-align: middle;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+	}
+	
+	
+	.content {
+		margin-bottom: 5px;
+		padding: 15px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.bot {
+		display: flex; 
+	    justify-content: space-between; 
+	    align-items: center; 
+		padding : 5px;
+		
+		textarea {
+			// flex: 1;
+			@extend %textar;
+		}
+	}
+}
+
 
 
 .page.users {
@@ -368,6 +427,22 @@ a {
 			border: 1px solid rgba(0, 0, 0, 0.25);
 		}
 	}
+}
+
+.page.comment-edit {
+	background-color: white;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	textarea {
+		border-radius: 6px;
+		border: 1px solid rgba(0, 0, 0, 0.25);
+		background: rgba(0, 0, 0, 0.03);
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+		resize: none;
+	}	
 }
 
 @media screen and (max-width : 600px) {
