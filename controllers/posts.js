@@ -1,8 +1,10 @@
 const Posts = require("../models/posts");
 const Comments = require("../models/comments");
-const users = require("../models/users");
+const Likes = require("../models/likes");
+const Users = require("../models/users");
 const moment = require("moment");
 const html = require("htmlspecialchars");
+const { countDocuments } = require("../models/posts");
 
 
 module.exports = {
@@ -129,6 +131,58 @@ module.exports = {
 			console.log(e);
 		}
 	},
+	async search(req, res) {
+		try{
+			var {search} = req.body;
+			var posts = await Posts.find({name: search}).populate("author", "-password").lean();
+			if(!posts) return res.redirect("/postPage");
+			for (var post of posts) {
+				post.comments = await Comments.countDocuments({post: post._id});
+			}
+			res.render("index", {
+				posts
+			})
+		}
+		catch(e) {
+			console.log(e);
+		}
+	},
+	async like(req, res) {
+		try {
+			var{id} = req.params;
+			var users = Users.findOne({_id: req.cookies.user_id}).lean();
+			var likes = await Likes.findOne({author: req.cookies.user_id});
+			if(!likes){
+				await Likes.create({
+					post_id: id,
+					author: req.cookies.user_id,
+					img: users.img,
+					here: 1
+				});
+				var posts = await Posts.find().sort({ date: - 1}).populate("author", "-password").lean();
+				for (var post of posts) {
+				post.comments = await Comments.countDocuments({post: post._id});
+				}
+				res.render("index", {
+					posts,
+					likes
+				});
+
+			}
+			else {
+				await Likes.deleteOne({author: req.cookies.user_id});
+				res.redirect("/");
+			}
+			
+			
+			
+		
+
+		}
+		catch(e) {
+			console.log(e);
+		}
+	},
 	async createComment(req, res) {
 		var id = req.params.id;
 		var {comment} = req.body;
@@ -163,17 +217,13 @@ module.exports = {
 	},
 	async editComment(req, res) {
 		try {
-			var post_id = req.cookies.post_id;
 			var {id} = req.params;
 			var {comment} = req.body;
-			var update = {comment};
 			var comment = await Comments.findOne({_id: id});
 			if (comment.author._id.toString() != req.cookies.user_id) return res.redirect("/");
-			console.log(post_id)
-			await Comments.updateOne({_id: id}, update);
-			res.redirect("/");
-			res.clearCookie("post_id");
-			
+			await Comments.updateOne({_id: id}, {comment});
+			res.redirect("/posts/" + comment.post);
+				
 		}
 		catch(e) {
 			console.log(e);

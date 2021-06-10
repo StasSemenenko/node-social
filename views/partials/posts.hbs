@@ -1,6 +1,7 @@
 {{#if posts.length}}
 {{#each posts}}
 <div class="posts card" >
+	<input type="hidden" name="post_id" value="{{_id}}">
 	<div class="top">
 		<a href="/users/{{author._id}}">
 			<div class="author-img">
@@ -47,7 +48,31 @@
 		  <i class="far fa-comment"></i>
 			<label>{{comments}}</label>
 		</a>
+		{{!-- <label>like{{likes.here}}</label>
+		<form action="/posts/{{_id}}/like" method="POST">
+			{{#ifCond like.here "==" 1}}
+				<button><i id="like" class="fa fa-heart"></i></button>
+			{{else}}
+				<button><i id="like" class="far fa-heart"></i></button>
+			{{/ifCond}}
+		</form> --}}
+			
 	</div>
 </div>
 {{/each}}
 {{/if}}
+
+{{!-- <script>
+	document.querySelector("#like").onclick = async () => {
+		var like = document.querySelector("#like");
+		var check;
+		if (like.classList.contains("far")) {
+			check = 1;
+			document.querySelector(".hid").value = check;
+		}
+		else {
+			check = 0;
+			document.querySelector(".hid").value = check;
+		}
+	}
+</script> --}}

@@ -14,9 +14,11 @@ router.get("/comment/:id/edit", posts.editCommentPage);
 
 
 
+router.post("/:id/like", posts.like);
 router.post("/add", posts.createPost);
 router.post("/:id/comment", login, posts.createComment);
 router.post("/:id/edit", login, posts.updatePost);
 router.post("/comment/:id/edit", posts. editComment);
+router.post("/search", posts.search);
 
 module.exports = router;

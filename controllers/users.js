@@ -12,7 +12,6 @@ module.exports = {
 			// console.log(users);
 			res.render("users", {
 				isUsers: true,
-				title: "Пользователи",
 				users
 			})
 		}
@@ -42,13 +41,18 @@ module.exports = {
 			res.redirect("/404");
 		}
 	}, 
-	async upload(req, res, next) { 
-			// let filedata = req.file;
-			// console.log(filedata);
-			// if(!filedata)
-			// 	res.send("Ошибка при загрузке файла");
-			// else
-			// 	res.redirect("/");
+	async search(req, res) {
+		try{
+			var {search} = req.body;
+			var users = await Users.find({name: search}).lean();
+			if(!users) return res.redirect("/users");
+			res.render("users", {
+				users
+			})
+		}
+		catch(e) {
+			console.log(e);
 		}
 	}
+}
 

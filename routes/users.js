@@ -8,7 +8,7 @@ router.get("/", users.getUsers);
 router.get("/:id", login, users.userPage);
 router.get("/all", users.getUsers);
 
-router.post("/upload", users.upload);
+router.post("/search", users.search)
 
 
 module.exports = router

@@ -11,6 +11,8 @@ html, body {
 	font-family: "Arial";
 }
 
+
+
 .hidden {
 	display: none;
 }
@@ -93,7 +95,7 @@ a {
 	}
 }
 .postPage {
-	// border: 1px solid black;
+	// border: 1px solid rgb(255, 127, 39);
 	.top {
 		display: flex; 
     	justify-content: space-between; 
@@ -121,7 +123,7 @@ a {
 
 .comment-post {
 	margin-top: 2px;
-	border: 1px solid black;
+	border: 1px solid rgb(255, 127, 39);
 	img {
 		width: 50px; 
 		height: 50px;
@@ -200,6 +202,42 @@ a {
 			@extend %textar;
 		}
 	}
+	.fa-heart {
+		color: red;
+		cursor: pointer;
+	}
+}
+
+.postSearch {
+	.search {
+		box-sizing: border-box;	
+		padding-bottom: 10px;
+		// form {
+		// 	position: relative;
+		// 	width: 300px;
+		// 	margin: 0 auto;
+		input {
+			width: 86%;
+			padding: 10px 10px 10px 10px;
+			border: 2px solid rgb(255, 127, 39);
+			// border-left: 2px solid rgb(255, 127, 39);
+			// border-top: 2px solid rgb(255, 127, 39);
+			border-radius: 5px 0 0 5px;
+			outline: none;
+			background: #F9F0DA;
+			color: #9E9C9C;
+		}
+		button {
+		position: absolute; 
+		padding: 10px;
+		border: 2px solid rgb(255, 127, 39);
+		// border-right: 2px solid rgb(255, 127, 39);
+		// border-top: 2px solid rgb(255, 127, 39);
+		background: rgb(255, 127, 39);
+		border-radius: 0 5px 5px 0;
+		cursor: pointer;
+		}	
+	}
 }
 
 .comment-post {
@@ -268,27 +306,26 @@ a {
 		// 	position: relative;
 		// 	width: 300px;
 		// 	margin: 0 auto;
-			input {
-				width: 100%;
-				// height: 42px;
-				padding-left: 10px;
-				border: 2px solid rgb(255, 127, 39);
-				border-radius: 5px;
-				outline: none;
-				background: #F9F0DA;
-				color: #9E9C9C;
-			}
-			button {
-			position: absolute; 
-			top: 0;
-			right: 0px;
-			width: 54px;
-			height: 42px;
-			border: none;
-			background: rgb(255, 127, 39);
-			border-radius: 0 5px 5px 0;
-			cursor: pointer;
-		//   }
+		input {
+			width: 86%;
+			padding: 10px 10px 10px 10px;
+			border: 2px solid rgb(255, 127, 39);
+			// border-left: 2px solid rgb(255, 127, 39);
+			// border-top: 2px solid rgb(255, 127, 39);
+			border-radius: 5px 0 0 5px;
+			outline: none;
+			background: #F9F0DA;
+			color: #9E9C9C;
+		}
+		button {
+		position: absolute; 
+		padding: 10px;
+		border: 2px solid rgb(255, 127, 39);
+		// border-right: 2px solid rgb(255, 127, 39);
+		// border-top: 2px solid rgb(255, 127, 39);
+		background: rgb(255, 127, 39);
+		border-radius: 0 5px 5px 0;
+		cursor: pointer;
 		}	
 	}
 	
@@ -326,6 +363,7 @@ a {
 		}
 	}
 }
+
 
 .page.post_create {
 	background-color: white;
@@ -390,14 +428,14 @@ a {
 }
 
 .page.logpage {
-	border: 1px solid black;
+	border: 1px solid rgb(255, 127, 39);
 	.input {
 		padding: 5px;
 	}
 }
 
 .authpage {
-	border: 1px solid black;
+	border: 1px solid rgb(255, 127, 39);
 	.input {
 		padding: 5px;
 	}

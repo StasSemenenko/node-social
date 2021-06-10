@@ -24,7 +24,7 @@ const PostSchema = new mongoose.Schema({
 		type: Date,
 		required: true,
 		default: () => new Date()
-	},
+	}
 },{
 	versionKey: false
 });

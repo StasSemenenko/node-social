@@ -2,7 +2,10 @@
 {{#if users.length}}
 <div class="page users">
   <div class="search">
-    <input id="search" name="search" placeholder="Искать здесь..." type="search">
+    <form action="/users/search" method="POST">
+      <input name="search" placeholder="Искать здесь..." type="search">
+      <button type="submit">Поиск</button>
+    </form>
   </div>
 {{#each users}}
 <div class="user">
