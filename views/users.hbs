@@ -1,26 +1,27 @@
-
 {{#if users.length}}
-<div class="page users">
-  <div class="search">
-    <form action="/users/search" method="POST">
-      <input name="search" placeholder="Искать здесь..." type="search">
-      <button type="submit">Поиск</button>
-    </form>
-  </div>
-{{#each users}}
-<div class="user">
-    <div class="img">
-      <p><a href="/users/{{_id}}"><img src="{{img}}"></a></p>
-    </div>
-    <div class="info">
-      <p><a href="/users/{{_id}}">{{name}}</a></p>
-      <p>{{info}}</p>
-    </div>
-    <input type="hidden" name="id" value="{{_id}}">
-  {{!-- <p>{{info}}</p> --}}
+    <div class="page users">
+    	<form class="search" action="/users/search" method="POST">
+    		<input name="search" placeholder="Искать здесь..." type="search">
+    		<button type="submit">Поиск</button>
+    	</form>
 
-</div>
+        {{#each users}}
+        <div class="user">
+    		<div class="img">
+    			<p><a href="/users/{{_id}}"><img src="{{img}}"></a></p>
+    		</div>
+    		<div class="info">
+    			<p><a href="/users/{{_id}}">{{name}}</a></p>
+    			<p>{{info}}</p>
+    		</div>
+    		<input type="hidden" name="id" value="{{_id}}">
+    	{{!-- <p>{{info}}</p> --}}
 
-{{/each}}
-</div>
+        </div>
+
+        {{/each}}
+    </div>
+{{else}}
+    <p>{{error}}</p>
+    <a style="text-decoration: underline;" href="/users">Вернуться к поиску</a>
 {{/if}}

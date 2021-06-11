@@ -39,27 +39,27 @@
 			{{#ifCond content.length ">" 150}}
 				{{trimString content 0 150}}...
 			{{else}}
-				{{content}}
+				{{{content}}}
 			{{/ifCond}}
 		</div>
 	</div>
-	<div class="bot">
+	<div class="bottom">
 		<a href="/posts/{{_id}}">
 		  <i class="far fa-comment"></i>
 			<label>{{comments}}</label>
 		</a>
-		{{!-- <label>like{{likes.here}}</label>
-		<form action="/posts/{{_id}}/like" method="POST">
-			{{#ifCond like.here "==" 1}}
-				<button><i id="like" class="fa fa-heart"></i></button>
+		<a href="/posts/{{_id}}/like">
+			{{#if liked}}
+				<button><i id="like" class="fa fa-heart"></i> {{likes.length}}</button>
 			{{else}}
-				<button><i id="like" class="far fa-heart"></i></button>
-			{{/ifCond}}
-		</form> --}}
-			
+				<button><i id="like" class="far fa-heart"></i> {{likes.length}}</button>
+			{{/if}}
+		</a>
 	</div>
 </div>
 {{/each}}
+{{else}}
+<p>{{error}}</p>
 {{/if}}
 
 {{!-- <script>

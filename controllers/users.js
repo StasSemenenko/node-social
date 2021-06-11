@@ -2,6 +2,7 @@ const Users = require("../models/users");
 const Posts = require("../models/posts");
 const Comments = require("../models/comments");
 const multer  = require("multer");
+const postsController = require("./posts")
 
 
 
@@ -22,12 +23,10 @@ module.exports = {
 	async userPage(req, res) {
 		try {
 			var id = req.params.id;
-			var posts = await Posts.find({author: id}).sort({ date: - 1}).populate("author").lean();
+			var search = {author: id};
 			var user = await Users.findOne({_id: id}).lean();
 			if(!user) return res.redirect("/404");
-			for (var post of posts) {
-				post.comments = await Comments.countDocuments({post: post._id});
-			}
+			var posts = await postsController.getAllPosts(req.cookies.user_id, search);
 			res.render("profile", {
 				isProfile: true,
 				user,
@@ -44,10 +43,12 @@ module.exports = {
 	async search(req, res) {
 		try{
 			var {search} = req.body;
-			var users = await Users.find({name: search}).lean();
-			if(!users) return res.redirect("/users");
+			var text = new RegExp(search, "gi");
+			var users = await Users.find({name: text}).lean();
 			res.render("users", {
-				users
+				users,
+				error: "Пользователь не найден"
+				// founded: users.length > 0
 			})
 		}
 		catch(e) {

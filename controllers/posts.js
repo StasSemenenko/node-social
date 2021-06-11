@@ -7,15 +7,26 @@ const html = require("htmlspecialchars");
 const { countDocuments } = require("../models/posts");
 
 
-module.exports = {
-	async homePage(req, res) {
+module.exports = controller = {
+	async getAllPosts(user_id, search) {
 		try {
-			// var id = req.body;
-			var posts = await Posts.find().sort({ date: - 1}).populate("author", "-password").lean();
+			var posts = await Posts.find(search).sort({ date: - 1}).populate("author").lean();
 			// var comments = await Comments.countDocuments();
 			for (var post of posts) {
 				post.comments = await Comments.countDocuments({post: post._id});
+				post.liked = !!post.likes.find(i => i.toString() == user_id);
+				post.content = post.content.replace(/\n/gi, "</br>");
 			}
+			return posts;
+		}
+		catch(e) {
+			console.log(e);
+		}
+	},
+
+	async homePage(req, res) {
+		try {
+			var posts = await controller.getAllPosts(req.cookies.user_id);
 			// res.send(comments);
 			res.render("index", {
 				isHome: true,
@@ -120,8 +131,10 @@ module.exports = {
 			var comments = await Comments.find({post : id}).populate("author").lean();
 			var post = await Posts.findOne({_id : id}).populate("author").lean();
 			if(!post) return res.redirect("/");
+			post.liked = !!post.likes.find(i => i.toString() == req.cookies.user_id);
+			post.content = post.content.replace(/\n/gi, "</br>");
 			// return res.send({ comments});
-			res.render("postPage", {
+			res.render("post-page", {
 				post,
 				comments
 			});
@@ -134,13 +147,15 @@ module.exports = {
 	async search(req, res) {
 		try{
 			var {search} = req.body;
-			var posts = await Posts.find({name: search}).populate("author", "-password").lean();
-			if(!posts) return res.redirect("/postPage");
+			var text = new RegExp(search, "gi");
+			var posts = await Posts.find({$or: [{name: text}, {content: text}]}).populate("author").lean();
+			
 			for (var post of posts) {
 				post.comments = await Comments.countDocuments({post: post._id});
 			}
 			res.render("index", {
-				posts
+				posts,
+				error: "Нет совпадений"
 			})
 		}
 		catch(e) {
@@ -150,33 +165,19 @@ module.exports = {
 	async like(req, res) {
 		try {
 			var{id} = req.params;
-			var users = Users.findOne({_id: req.cookies.user_id}).lean();
-			var likes = await Likes.findOne({author: req.cookies.user_id});
-			if(!likes){
-				await Likes.create({
-					post_id: id,
-					author: req.cookies.user_id,
-					img: users.img,
-					here: 1
-				});
-				var posts = await Posts.find().sort({ date: - 1}).populate("author", "-password").lean();
-				for (var post of posts) {
-				post.comments = await Comments.countDocuments({post: post._id});
-				}
-				res.render("index", {
-					posts,
-					likes
-				});
-
+			var user_id = req.cookies.user_id;
+			var post = await Posts.findOne({_id: id}).lean();
+			if(post.likes.find(i => i.toString() == user_id)){
+				await Posts.updateOne({_id: id},{
+					$pull:{likes: user_id}
+				})
 			}
 			else {
-				await Likes.deleteOne({author: req.cookies.user_id});
-				res.redirect("/");
+				await Posts.updateOne({_id: id},{
+					$addToSet:{likes: user_id}
+				})
 			}
-			
-			
-			
-		
+			res.redirect("back");
 
 		}
 		catch(e) {

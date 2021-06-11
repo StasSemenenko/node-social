@@ -19,7 +19,10 @@ const PostSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	
+	likes:[{
+		type: mongoose.Types.ObjectId,
+		ref: "users"
+	}],	
 	date: {
 		type: Date,
 		required: true,
