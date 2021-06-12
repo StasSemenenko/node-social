@@ -10,11 +10,10 @@ const { countDocuments } = require("../models/posts");
 module.exports = controller = {
 	async getAllPosts(user_id, search) {
 		try {
-			var posts = await Posts.find(search).sort({ date: - 1}).populate("author").lean();
-			// var comments = await Comments.countDocuments();
+			var posts = await Posts.find(search).sort({ date: - 1}).populate("author").populate("likes").lean();
 			for (var post of posts) {
 				post.comments = await Comments.countDocuments({post: post._id});
-				post.liked = !!post.likes.find(i => i.toString() == user_id);
+				post.liked = !!post.likes.find(i => i._id.toString() == user_id);
 				post.content = post.content.replace(/\n/gi, "</br>");
 			}
 			return posts;
@@ -26,12 +25,13 @@ module.exports = controller = {
 
 	async homePage(req, res) {
 		try {
+			var {post_id} = req.body;
 			var posts = await controller.getAllPosts(req.cookies.user_id);
-			// res.send(comments);
+			// res.send(posts);
+			// console.log(posts);
 			res.render("index", {
 				isHome: true,
 				posts
-				
 			})
 			// console.log(posts);
 			// posts.forEach(abc => console.log(abc.author.img));

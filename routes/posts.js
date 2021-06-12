@@ -10,8 +10,8 @@ router.get("/:id", login, posts.postPage);
 router.get("/:id/edit", login, posts.editPostPage);
 router.get("/comment/:id/remove", login, posts.removeComment);
 router.get("/:id/remove", login, posts.removePost);
-router.get("/comment/:id/edit", posts.editCommentPage);
-router.get("/:id/like", posts.like);
+router.get("/comment/:id/edit", login, posts.editCommentPage);
+router.get("/:id/like", login, posts.like);
 
 
 

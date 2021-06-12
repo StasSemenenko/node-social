@@ -37,7 +37,7 @@
 		</div>
 		<div class="content">
 			{{#ifCond content.length ">" 150}}
-				{{trimString content 0 150}}...
+				{{{trimString content 0 150}}}<a href="/posts/{{_id}}">...</a>
 			{{else}}
 				{{{content}}}
 			{{/ifCond}}
@@ -48,13 +48,20 @@
 		  <i class="far fa-comment"></i>
 			<label>{{comments}}</label>
 		</a>
-		<a href="/posts/{{_id}}/like">
-			{{#if liked}}
-				<button><i id="like" class="fa fa-heart"></i> {{likes.length}}</button>
-			{{else}}
-				<button><i id="like" class="far fa-heart"></i> {{likes.length}}</button>
-			{{/if}}
-		</a>
+		<div>
+			<a href="/posts/{{_id}}/like">
+				{{#if liked}}
+					<button><i id="like" class="fa fa-heart"></i> {{likes.length}}</button>
+				{{else}}
+					<button><i id="like" class="far fa-heart"></i> {{likes.length}}</button>
+				{{/if}}
+			</a>
+			<div class="tooltip">
+				{{#each likes}}
+					<p><a href="/users/{{_id}}"><img src="{{img}}"></a></p>
+				{{/each}}
+			</div>
+		</div>
 	</div>
 </div>
 {{/each}}

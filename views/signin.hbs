@@ -1,20 +1,14 @@
-<h1>Страница авторизации</h1>
 
-
-<h1>Регистрация</h1>
-
-<div class="page logpage">
+<div class="page logPage">
+    <h1>Страница авторизации</h1>
 	<form action="/auth/signin" method="POST">
      	<div class="input">
-            <input name="email" type="email" >
-            <label for="email">Веведите Ваше email</label>
+            <i class="fas fa-user-tie"></i> <input name="email" type="email" >
         </div>
          
     	<div class="input">
-            <input name="password" type="password">
-            <label for="password">Введите пароль </label>
+            <i class="fas fa-unlock-alt"></i> <input name="password" type="password">
         </div>
-</div>
 
     	<button class="btn btn-primary">Войти</button>
         
@@ -24,4 +18,5 @@
 	</form>
 
 
-<p>Если у Вас еще нет аккаунта, то  <a href="/auth/signup">зарегистрируйтесь</a>
+    <p>Если у Вас еще нет аккаунта, то  <a href="/auth/signup">зарегистрируйтесь</a>
+</div>

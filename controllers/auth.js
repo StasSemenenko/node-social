@@ -20,6 +20,11 @@ module.exports = {
 				error: "Пароли не совпадают"
 			})
 		}
+		if(password.length < 6 || password2.length < 6){
+			return res.render("signup", {
+				error: "Пароль должен быть длинее 6 сиволов"
+			})
+		}
 		try {
 			var user = await Users.findOne({email});
 			if(user) {

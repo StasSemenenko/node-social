@@ -1,20 +1,18 @@
 <div class="page profile">
 	<div class="card">
 		<img src="{{user.img}}" alt="Avatar" >
-		<div class="container">
-		    <h4><b>{{user.name}}</b></h4> 
-			{{#ifeq user._id user_id}}
-			    <form method="POST" action="/profile/photo" enctype="multipart/form-data">
-		  			<button class="my_btn" onclick="click()" type="button">Выбрать фото</button><br><br>
-		 			<input type="submit" value="Загрузить"/>
-		  			<input class="hidden" id="file" type="file" name="avatar"/><br><br>
-				</form>
-			{{/ifeq}}	
-	  	</div>
+		{{#ifeq user._id user_id}}
+		    <form class="container" method="POST" action="/profile/photo" enctype="multipart/form-data">
+	  			<button class="my_btn" onclick="click()" type="button">Выбрать фото</button>
+	 			<button type="submit"><i class="fas fa-download"></i></button>
+	  			<input class="hidden" id="file" type="file" name="avatar"/>
+			</form>
+		{{/ifeq}}	
 	</div>
 
 	<div class="info">
-		{{user.info}}
+		<h4><b>{{user.name}}</b></h4> 
+		<p>{{user.info}}</p>
 		{{#ifeq user._id user_id}}
 			<p>
 				<a href="/profile/edit">
