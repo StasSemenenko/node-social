@@ -36,11 +36,17 @@
 			<a href="/posts/{{_id}}">{{name}} </a>
 		</div>
 		<div class="content">
+			{{#if content}}
 			{{#ifCond content.length ">" 150}}
 				{{{trimString content 0 150}}}<a href="/posts/{{_id}}">...</a>
 			{{else}}
 				{{{content}}}
 			{{/ifCond}}
+			{{/if}}
+			
+			{{#if img}}
+				<img src="{{img}}">
+			{{/if}}
 		</div>
 	</div>
 	<div class="bottom">

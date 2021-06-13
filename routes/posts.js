@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const posts = require("../controllers/posts");
 const login = require("../middleware/login");
+const fileUpload = require("../middleware/file");
+
 
 
 router.get("/", posts.homePage);
@@ -15,7 +17,7 @@ router.get("/:id/like", login, posts.like);
 
 
 
-router.post("/add", posts.createPost);
+router.post("/add", login, fileUpload, posts.createPost);
 router.post("/:id/comment", login, posts.createComment);
 router.post("/:id/edit", login, posts.updatePost);
 router.post("/comment/:id/edit", posts. editComment);

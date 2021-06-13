@@ -5,6 +5,8 @@ const Users = require("../models/users");
 const moment = require("moment");
 const html = require("htmlspecialchars");
 const { countDocuments } = require("../models/posts");
+const mongoose = require("mongoose");
+const path = require("path");
 
 
 module.exports = controller = {
@@ -43,26 +45,35 @@ module.exports = controller = {
 	},
 	async createPost(req, res) {
 		var {content, name, color} = req.body;
+		console.log(req.files);
+		if (!name) return  res.render("post-create",{
+			error: "Введите название поста"
+		});
+		if(!content) content = " ";
 		try {
-			// console.log(name, content, color);
-			var new_post = await Posts.create({
-				isAdd: true,
+			var data = {
+				_id: mongoose.Types.ObjectId(),
 				author: req.cookies.user_id,
 				name,
 				content,
 				color
+			}
+			if(req.files.img){
+				var type = req.files.img.name.split(".").pop();
+				var img = path.resolve(__dirname, "..", "public/img/posts", `${data._id}.${type}`);
+				await req.files.img.mv(img);
+				data.img = `/public/img/posts/${data._id}.${type}`;
+			}
 
-				
-			})
+			await Posts.create(data);
 			res.redirect("/");
-			res.locals.post_id = req.cookies.user_id;
-			// console.log(name, content, color);
 		}
 		catch (e) {
 			console.log(e);
 		}
 		
 	},
+	
 	async editPostPage(req, res) {
 		try{
 			var id = req.params.id;
@@ -131,9 +142,10 @@ module.exports = controller = {
 			var comments = await Comments.find({post : id}).populate("author").lean();
 			var post = await Posts.findOne({_id : id}).populate("author").lean();
 			if(!post) return res.redirect("/");
-			post.liked = !!post.likes.find(i => i.toString() == req.cookies.user_id);
+			post.liked = !!post.likes.find(i => i == req.cookies.user_id);
 			post.content = post.content.replace(/\n/gi, "</br>");
 			// return res.send({ comments});
+			// res.send(post)
 			res.render("post-page", {
 				post,
 				comments
@@ -167,7 +179,7 @@ module.exports = controller = {
 			var{id} = req.params;
 			var user_id = req.cookies.user_id;
 			var post = await Posts.findOne({_id: id}).lean();
-			if(post.likes.find(i => i.toString() == user_id)){
+			if(post.liked = !!post.likes.find(i => i == req.cookies.user_id)){
 				await Posts.updateOne({_id: id},{
 					$pull:{likes: user_id}
 				})

@@ -1,7 +1,10 @@
 <h1>Создать публикацию</h1>
 
 <div class="page post_create">
-	<form action="/posts/add" method="POST" class="add">
+	{{#if error}}
+       <p style="color:red; font-size: 40px">{{error}}</p>
+    {{/if}}
+	<form action="/posts/add" method="POST" class="add" enctype="multipart/form-data">
 		<p>Введите заголовок поста </p>
 		<input class="name" name="name" type="text">
 		<div>
@@ -11,7 +14,18 @@
 
 		<p>Введите содержимое поста</p>
 	    <textarea rows="10" name="content" type="text" class="validate"></textarea>
-
+		<div>
+			<p>Прикрепить картинку</p>
+  			<button class="my_btn" onclick="click()" type="button">Выбрать фото</button>
+  			<input class="hidden" id="file" type="file" name="img"/>
+		</div>
 		<button type="submit" class="btn">Разместить пост</button>
 	</form>
+	
 </div>
+
+<script> 
+	document.querySelector(".my_btn").onclick = () => {
+		document.querySelector("#file").click();
+	};
+</script>

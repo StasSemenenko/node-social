@@ -1,6 +1,7 @@
 node_modules
 package-lock.json
-avatars
+public/img/avatars
 style.css
 prod.json
 config/prod.json
+public/img/posts

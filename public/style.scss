@@ -9,7 +9,7 @@ html, body {
 	padding: 0;
 	margin: 0;
 	background-color: #f5f5f5;
-	font-family: "Colibri";
+	font-family: "Calibri";
 }
 
 
@@ -208,7 +208,7 @@ a {
 	}
 	
 	.center {
-
+		
 		.name {
 			padding: 10px;
 			color: white;
@@ -231,14 +231,51 @@ a {
 					font-size: 30px;
 				}
 			}
+			// &:hover .tooltip {
+			// 	display: block;
+			// }
+			// .tooltip {
+			// 	position: absolute;
+			// 	display: none;
+			// 	width: 498px;
+			// 	height: 100px;
+			// 	border: 1px solid rgba(0, 0, 0, 0.1);
+			// 	background: white;
+			// 	border-radius: 10px;
+			// 	p{
+			// 		margin: 0;
+			// 		padding: 0;
+			// 		img {
+			// 			width: 25px;
+			// 			height: 25px;
+			// 			border-radius: 100%;
+			// 			object-fit: cover;
+			// 			margin: 5px;
+
+			// 		}
+			// 	}
+			// }
 		}
 	}
 	
 	.content {
+		
 		margin-bottom: 5px;
 		padding: 15px;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		a {
+			color: blue;
+		}
+		img {
+			margin: auto;
+			margin-top: 15px;
+			display: block;
+			width: 50%;
+			height: auto;
+			border-radius: 5px;
+			object-fit: cover;
+		}
 	}
 	
 	.bottom {
@@ -254,9 +291,12 @@ a {
 				background-color: white;
 			}
 			&:hover .tooltip {
-			display: block;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row;
 			}
 			.tooltip {
+				width: 175px;
 				position: absolute;
 				display: none;
 				border: 1px solid rgba(0, 0, 0, 0.1);
@@ -437,6 +477,17 @@ form.search {
 			border: 1px solid rgba(0, 0, 0, 0.25);
 		}
 	}
+	.my_btn {
+		background-color: white; 
+	}
+	button {
+		border-radius: 5px;
+		border: 1px solid black;
+		color: green;
+		&:hover {
+			box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+		}
+	}
 	
 }
 
@@ -480,8 +531,11 @@ form.search {
 			}
 			button {
 				margin: 5px;
-				border: none;
-				background-color:rgba(0, 0, 0, 0);
+				margin-left: 10px;
+				padding: 0;
+				// border:1px solid rgb(236, 130, 9);
+				border-radius: 10px;
+				background-color:rgba(153, 33, 33, 0.11);
 				color: white;
 				cursor: pointer;
 			}
@@ -497,6 +551,12 @@ form.search {
 		p {
 			text-align: center;
 			vertical-align: middle;
+			button {
+				border-radius: 10px;
+				&:hover {
+					box-shadow: 0px 0px 10px 11px rgba(0,0,0,0.2);
+				}	
+			}
 		}
 		// width: 55%;
 		// text-align: center;
@@ -507,10 +567,38 @@ form.search {
 
 }
 
+.page.edit-profile {
+	// text-align: center;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	padding: 10px 50px 50px 50px;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	form {
+		.input {
+			margin-bottom: 15px;
+		}
+		input, textarea {
+			border-radius: 5px;
+			border: 1px solid black;
+			// margin-bottom: 5px;
+			resize: none;
+			// margin-bottom: 10px;
+		}
+		button {
+			border-radius: 5px;
+			border: 1px solid black;
+			&:hover {
+				box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+			}
+		}
+	}
+}
+
 .page.logPage {
 	text-align: center;
 	border: 1px solid rgba(0, 0, 0, 0.15);
-	padding: 15px;
+	padding: 0px 15px 15px 15px;
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -518,6 +606,14 @@ form.search {
 		.input {
 			margin-bottom: 5px;
 			padding: 5px;
+		}
+		button {
+			border-radius: 5px;
+			border: 1px solid black;
+			color: green;
+			&:hover {
+				box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+			}
 		}
 	}
 	a {
@@ -532,7 +628,7 @@ form.search {
 		text-align: center;
 	}
 	border: 1px solid rgba(0, 0, 0, 0.15);
-	padding: 15px;
+	padding: 0px 15px 15px 15px;
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -543,6 +639,14 @@ form.search {
 		}
 		button {
 			margin-left: 10px;
+		}
+		button {
+			border-radius: 5px;
+			border: 1px solid black;
+			color: green;
+			&:hover {
+				box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+			}
 		}
 	}
 
@@ -572,6 +676,14 @@ form.search {
 			border: 1px solid rgba(0, 0, 0, 0.25);
 		}
 	}
+	button {
+		border-radius: 5px;
+		border: 1px solid black;
+		color: green;
+		&:hover {
+			box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+		}
+	}
 }
 
 .page.comment-edit {
@@ -587,7 +699,16 @@ form.search {
 		box-sizing: border-box;
 		padding: 10px;
 		resize: none;
+		margin-bottom: 5px;
 	}	
+	button {
+		border-radius: 5px;
+		border: 1px solid black;
+		color: green;
+		&:hover {
+			box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+		}
+	}
 }
 
 @media screen and (max-width : 600px) {
@@ -614,6 +735,15 @@ form.search {
 			img {
 				width: 80px;
 				height: 80px;
+				object-fit: cover;
+
+			}
+			.container {
+				button {
+					font-size: 10px;
+					margin: 0 10px 0 0;
+					padding: 0;
+				}
 			}
 		}
 		.info {

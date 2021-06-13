@@ -33,6 +33,9 @@
 
 			<div class="content">
 				{{{post.content}}}
+				{{#if post.img}}
+					<img src="{{post.img}}">
+				{{/if}}
 			</div>
 
 			<div class="likes">
@@ -43,6 +46,12 @@
 						<button><i id="like" class="far fa-heart"></i><span>{{post.likes.length}}</span></button>
 					{{/if}}
 				</a>
+
+				{{!-- <div class="tooltip">
+					{{#each post.likes}}
+						<p><a href="/users/{{likes._id}}"><img src="{{img}}"></a></p>
+					{{/each}}
+				</div> --}}
 			</div>
 		</div>
 	</div>
