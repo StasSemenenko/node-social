@@ -296,7 +296,7 @@ a {
 				flex-direction: row;
 			}
 			.tooltip {
-				width: 175px;
+				max-width: 175px;
 				position: absolute;
 				display: none;
 				border: 1px solid rgba(0, 0, 0, 0.1);
