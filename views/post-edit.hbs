@@ -4,6 +4,9 @@
     <form action="/posts/{{post._id}}/edit" method="POST" class="profile-form">
  		<p>Введите заголовок поста </p>
             <input class="name" name="name" type="text" value="{{post.name}}">
+			{{#if error}}
+				<p>{{error}}</p>
+			{{/if}}
         <div>
 			<p>Выберите цвет фона</p>
 			<input class="color-brd" name="color" type="color" value="{{post.color}}">

@@ -10,6 +10,9 @@
             <textarea id="info" name="info" type="text" >{{user.info}}</textarea>
             <label for="info">Информация про Вас</label>
         </div>
+        {{#if error}}
+            <p style="color: red;">{{error}}</p>
+        {{/if}}
 
         <div class="input shadow-sm">
             <textarea id="email" name="email" type="text" >{{user.email}}</textarea>
@@ -20,6 +23,9 @@
             <input id="pasword" name="password" type="password" value="{{user.password}}">
             <label for="info">Ваш пароль</label>
         </div>
+        {{#if error2}}
+            <p style="color: red;">{{error2}}</p>
+        {{/if}}
 
     	<button type="submit" class="btn btn-primary">Редактировать профиль</button>
     </form>

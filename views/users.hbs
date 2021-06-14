@@ -1,7 +1,7 @@
 {{#if users.length}}
     <div class="page users">
     	<form class="search" action="/users/search" method="POST">
-    		<input name="search" placeholder="Искать здесь..." type="search">
+    		<input name="search" placeholder="Поиск по пользователям" type="search">
     		<button type="submit">Поиск</button>
     	</form>
 
@@ -11,7 +11,7 @@
     			<p><a href="/users/{{_id}}"><img src="{{img}}"></a></p>
     		</div>
     		<div class="info">
-    			<p><a href="/users/{{_id}}">{{name}}</a></p>
+    			<span><a href="/users/{{_id}}">{{name}}</a></span>
     			<p>{{info}}</p>
     		</div>
     		<input type="hidden" name="id" value="{{_id}}">

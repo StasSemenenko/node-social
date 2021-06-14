@@ -45,7 +45,7 @@ module.exports = {
 			}
 		}
 		catch (e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	},
 	signout(req, res) {
@@ -72,7 +72,7 @@ module.exports = {
 			}
 		}
 		catch (e) {
-			console.log(e)
+			res.render("errors",{code: "500"});
 		}
 	}
 

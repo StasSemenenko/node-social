@@ -17,7 +17,7 @@ module.exports = {
 			})
 		}
 		catch (e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	},
 	async userPage(req, res) {
@@ -25,19 +25,16 @@ module.exports = {
 			var id = req.params.id;
 			var search = {author: id};
 			var user = await Users.findOne({_id: id}).lean();
-			if(!user) return res.redirect("/404");
+			if(!user) return res.render("errors",{code: "404"});
 			var posts = await postsController.getAllPosts(req.cookies.user_id, search);
 			res.render("profile", {
 				isProfile: true,
 				user,
 				posts
-
 			})
-
-			// res.send(user);
 		}
 		catch (e) {
-			res.redirect("/404");
+			res.render("errors",{code: "404"});
 		}
 	}, 
 	async search(req, res) {
@@ -52,7 +49,7 @@ module.exports = {
 			})
 		}
 		catch(e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	}
 }

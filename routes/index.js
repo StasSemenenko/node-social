@@ -11,7 +11,7 @@ const login = require("../controllers/auth");
 
 
 router.get("/", posts_controller.homePage);
-router.get("/404", (req, res) => res.render("404"));
+router.get("/errors", (req, res) => res.render("errors", {cose: "404"}));
 
 
 router.use("/users", users);
@@ -19,6 +19,6 @@ router.use("/auth", auth);
 router.use("/posts", posts);
 router.use("/profile", profile);
 
-router.get("/*", (req, res) => res.redirect("404"));
+router.get("/*", (req, res) => res.render("errors",{code: "404"}));
 
 module.exports = router

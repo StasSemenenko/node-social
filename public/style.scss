@@ -4,6 +4,7 @@
 }
 
 $color: #e67e22;
+$shadow: 0 4px 20px rgba(0,0,0,0.1);
 
 html, body {
 	padding: 0;
@@ -136,10 +137,9 @@ a {
 
 .commentForm {
 	padding: 15px;
-	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
 	background-color: white;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	box-shadow: $shadow;
 	margin-bottom: 25px;
 	form {
 		display: flex;
@@ -164,11 +164,10 @@ a {
 }
 
 .posts.card {
-	border: 1px solid rgba(0, 0, 0, 0.15);
 	margin-bottom: 15px;
 	border-radius: 10px;
 	background-color: white;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	box-shadow: $shadow;
 	
 	.top {
 		display: flex; 
@@ -355,11 +354,10 @@ form.search {
 
 
 .comment-post {
-	border: 1px solid rgba(0, 0, 0, 0.15);
 	margin-bottom: 15px;
 	border-radius: 10px;
 	background-color: rgb(255, 255, 255);
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	box-shadow: $shadow;
 	
 	.top {
 		display: flex; 
@@ -427,24 +425,27 @@ form.search {
 		display: flex; 
 		justify-content: space-around; 
 		align-items: center; 
-		border: 1px solid rgba(0, 0, 0, 0.15);
 	    margin-bottom: 15px;
 	    border-radius: 10px;
 	    background-color: white;
-		box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+		box-shadow: $shadow;
 		border-radius: 10px;
 		.info {
 			flex: 1;
 			padding-left: 10px;
-			// display: flex; 
-			// justify-content: space-around; 
-			// align-items: center; 
+			margin: 5px;
+			span {
+				font-weight:bold;
+			}
+			p {
+				margin: 5px 0 0 0;
+			}
 		}
 		.img {
 			padding-left: 10px;
 			img {
-				width: 100px;
-				height: 100px;
+				width: 50px;
+				height: 50px;
 				border-radius: 50%;
 				object-fit: cover;
 			}
@@ -495,7 +496,7 @@ form.search {
 	display: flex; 
    	margin-bottom: 20px;
 	border-radius: 10px;
-	box-shadow: 10px 4px 8px 10px rgba(0,0,0,0.2);
+	box-shadow: $shadow;
 	.card {
 		// flex:1;
 		position: relative;
@@ -507,12 +508,13 @@ form.search {
 		// 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 		// }
 		img {
+			
 			width: 170px;
-			height: 170px;
+			// height: 170px;
 			display: block;
 			// height: 200px;
 			border-radius: 10px;
-			object-fit: contain;
+			object-fit: cover;
 			
 		}
 		.container {
@@ -569,14 +571,16 @@ form.search {
 
 .page.edit-profile {
 	// text-align: center;
-	border: 1px solid rgba(0, 0, 0, 0.15);
 	padding: 10px 50px 50px 50px;
 	border-radius: 10px;
 	background-color: white;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	box-shadow: $shadow;
 	form {
 		.input {
 			margin-bottom: 15px;
+		}
+		.input.info {
+			
 		}
 		input, textarea {
 			border-radius: 5px;
@@ -597,11 +601,10 @@ form.search {
 
 .page.logPage {
 	text-align: center;
-	border: 1px solid rgba(0, 0, 0, 0.15);
 	padding: 0px 15px 15px 15px;
 	border-radius: 10px;
 	background-color: white;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	box-shadow: $shadow;
 	form {
 		.input {
 			margin-bottom: 5px;
@@ -627,11 +630,10 @@ form.search {
 	h1 {
 		text-align: center;
 	}
-	border: 1px solid rgba(0, 0, 0, 0.15);
 	padding: 0px 15px 15px 15px;
 	border-radius: 10px;
 	background-color: white;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	box-shadow: $shadow;
 	form {
 		.input {
 			margin: 6px;
@@ -725,6 +727,18 @@ form.search {
 		align-items: stretch; 
 		flex-wrap: wrap;
 		font-size: 5.5vw;
+		.wrapper {
+			.logo {
+				span {
+					display: block;
+				}
+			}
+			.menu {
+				a {
+					font-size: 5vw;
+				}
+			}
+		}
 		span {
 			display: none;
 		} 

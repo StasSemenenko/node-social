@@ -21,31 +21,24 @@ module.exports = controller = {
 			return posts;
 		}
 		catch(e) {
-			console.log(e);
-		}
+nder	}
 	},
 
 	async homePage(req, res) {
 		try {
 			var {post_id} = req.body;
 			var posts = await controller.getAllPosts(req.cookies.user_id);
-			// res.send(posts);
-			// console.log(posts);
 			res.render("index", {
 				isHome: true,
 				posts
 			})
-			// console.log(posts);
-			// posts.forEach(abc => console.log(abc.author.img));
+
 		}
 		catch(e) {
-			console.log(e);
-			res.render("404");
-		}
+nder	}
 	},
 	async createPost(req, res) {
 		var {content, name, color} = req.body;
-		console.log(req.files);
 		if (!name) return  res.render("post-create",{
 			error: "Введите название поста"
 		});
@@ -69,8 +62,7 @@ module.exports = controller = {
 			res.redirect("/");
 		}
 		catch (e) {
-			console.log(e);
-		}
+nder	}
 		
 	},
 	
@@ -86,23 +78,22 @@ module.exports = controller = {
 			});
 		}
 		catch(e) {
-			console.log(e);
+			res.render("errors",{code: "404"});
 		}
 	},
 	async updatePost(req, res) {
 		try {
+			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			var {id} = req.params;
 			var {name, content, color} = req.body;
 			var update = {name, content, color};
 			var post = await Posts.findOne({_id: id});
-			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			await Posts.updateOne({_id: id}, update);
 			res.redirect("/");
 			
 		}
 		catch(e) {
-			console.log(e);
-		}
+nder	}
 	}, 
 	async removePost(req, res) {
 		var id = req.params.id;
@@ -115,8 +106,7 @@ module.exports = controller = {
 			res.redirect(req.get('referer'));
 		}
 		catch(e) {
-			console.log(e);
-		}
+nder	}
 		
 	},
 	async removeComment(req, res) {
@@ -128,13 +118,16 @@ module.exports = controller = {
 			res.redirect(req.get('referer'));
 		}
 		catch(e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	},
 	async createPostPage(req, res) {
-		res.render("post-create");
-		// const posts = await Posts.find().populate("author", "-password");
-		// res.send(posts);
+		try {
+			res.render("post-create");
+		}
+		catch(e) {
+			res.render("errors",{code: "404"});
+		}
 	},
 	async postPage(req, res) {
 		try {
@@ -153,14 +146,14 @@ module.exports = controller = {
 
 		}
 		catch (e) {
-			console.log(e);
+			res.render("errors",{code: "404"});
 		}
 	},
 	async search(req, res) {
 		try{
 			var {search} = req.body;
 			var text = new RegExp(search, "gi");
-			var posts = await Posts.find({$or: [{name: text}, {content: text}]}).populate("author").lean();
+			var posts = await Posts.find({$or: [{name: text}, {content: text}]}).sort({ date: - 1}).populate("author").lean();
 			
 			for (var post of posts) {
 				post.comments = await Comments.countDocuments({post: post._id});
@@ -171,7 +164,7 @@ module.exports = controller = {
 			})
 		}
 		catch(e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	},
 	async like(req, res) {
@@ -189,11 +182,11 @@ module.exports = controller = {
 					$addToSet:{likes: user_id}
 				})
 			}
-			res.redirect("back");
+			res.redirect(req.get("referer"));
 
 		}
 		catch(e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	},
 	async createComment(req, res) {
@@ -209,23 +202,31 @@ module.exports = controller = {
 			
 		}
 		catch (e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	},
 	async editCommentPage(req, res) {
 		try{
-			var {post_id} = req.body
 			var id = req.params.id;
+			var comm = req.body.comment;
 			if (!id) return res.redirect("/");
 			var comment = await Comments.findOne({_id: id}).lean();
 			if (comment.author._id.toString() != req.cookies.user_id) return res.redirect("/");
-			res.cookie("post_id", post_id);
+			if (comment.length = 0){
+				res.clearCookie("input_comment");
+				res.cookie("input_comment", comm);
+				return res.render("profile-edit", {
+					comment: req.cookies.input_comment,
+					error: "Информация о Вас не должна привышать 50 символов"
+				});
+			}
+			res.clearCookie("input_comment");
 			res.render("comment-edit", {
 				comment
 			});
 		}
 		catch(e) {
-			console.log(e);
+			res.render("errors",{code: "404"});
 		}
 	},
 	async editComment(req, res) {
@@ -239,7 +240,7 @@ module.exports = controller = {
 				
 		}
 		catch(e) {
-			console.log(e);
+			res.render("errors",{code: "500"});
 		}
 	},
 }
