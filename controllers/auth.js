@@ -66,7 +66,7 @@ module.exports = {
 				res.redirect("/"); 
 			}
 			else {
-				res.render("signIn", {
+				res.render("signin", {
 					error: "Не верные данные!"
 				})
 			}
