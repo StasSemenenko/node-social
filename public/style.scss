@@ -19,11 +19,6 @@ html, body {
 	display: none;
 }
 
-.my_btn {
-	background-color: green;
-}
-
-
 
 .container {
 	width: 500px;
@@ -99,29 +94,17 @@ a {
 	}
 }
 .postPage {
-	// border: 1px solid $color;
-	.top {
-		display: flex; 
-    	justify-content: space-between; 
-	    align-items: center; 
-	    flex-wrap: wrap; 
-		border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-		padding: 15px;
-		.info {
-			flex: 1;
-		    justify-content: space-between;
-			text-align: top;
-			padding-left: 10px;
-			
-			.date {
-				opacity: 0.25;
+	.posts.card {
+		padding-bottom: 10px;
+		.likes {
+			margin-left: 10px;
+			text-align: center;
+			button {
+				border: none;
+				background-color: white;
+				font-size: 30px;
 			}
 		}
-	}
-	img {
-		width: 50px; 
-		height: 50px;
-		object-fit: cover;
 	}
 }
 
@@ -216,45 +199,6 @@ a {
 			text-align: center;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 		}
-		.likes {
-			text-align: center;
-			button {
-				border: none;
-				background-color: white;
-				.fa-heart {
-					&::before {
-						font-size: 30px;
-					}
-				}
-				span {
-					font-size: 30px;
-				}
-			}
-			// &:hover .tooltip {
-			// 	display: block;
-			// }
-			// .tooltip {
-			// 	position: absolute;
-			// 	display: none;
-			// 	width: 498px;
-			// 	height: 100px;
-			// 	border: 1px solid rgba(0, 0, 0, 0.1);
-			// 	background: white;
-			// 	border-radius: 10px;
-			// 	p{
-			// 		margin: 0;
-			// 		padding: 0;
-			// 		img {
-			// 			width: 25px;
-			// 			height: 25px;
-			// 			border-radius: 100%;
-			// 			object-fit: cover;
-			// 			margin: 5px;
-
-			// 		}
-			// 	}
-			// }
-		}
 	}
 	
 	.content {
@@ -283,6 +227,21 @@ a {
 	    align-items: center; 
 		padding: 15px;
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		.likes {
+			text-align: center;
+			button {
+				border: none;
+				background-color: white;
+				.fa-heart {
+					&::before {
+						font-size: 30px;
+					}
+				}
+				span {
+					font-size: 30px;
+				}
+			}
+		}
 		div {
 			
 			button {
@@ -459,6 +418,16 @@ form.search {
 	padding: 20px;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
+	form {
+		.add {
+			border: 1px solid rgba(41, 170, 24, 0.15);
+			border-radius: 5px;
+			background-color: green;
+			color: white;
+			cursor: pointer;
+			font-family: "Snell Roundhand", cursive;
+		}
+	}
 	.name, textarea {
 		border-radius: 6px;
 		border: 1px solid rgba(0, 0, 0, 0.25);
@@ -473,23 +442,19 @@ form.search {
 	    justify-content: space-between; 
 	    align-items: center; 
 		padding : 5px;
-		.color-text, .color-fon {
+		.color {
 			border-radius: 6px;
 			border: 1px solid rgba(0, 0, 0, 0.25);
+			cursor: pointer;
 		}
 	}
-	.my_btn {
-		background-color: white; 
-	}
-	button {
-		border-radius: 5px;
-		border: 1px solid black;
-		color: green;
-		&:hover {
-			box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+	.img {
+		button {
+			border: 1px solid rgba(0, 0, 0, 0);
+			background-color: rgba(0, 0, 0, 0);
+			cursor: pointer;
 		}
-	}
-	
+	}	
 }
 
 .page.profile {
@@ -531,15 +496,53 @@ form.search {
 			.my_btn {
 				flex: 1;
 			}
+			// button {
+			// 	margin: 5px;
+			// 	margin-left: 10px;
+			// 	padding: 0;
+			// 	border-radius: 10px;
+			// 	// text-align: center;
+			// 	border: 1px solid rgba(0, 0, 0, 0.1);
+			// 	&:hover {
+			// 	  background-color: $color;
+			// 	  color: #fff;
+			// 	  border-bottom: 4px solid darken($color, 10%);
+			// 	}
+			// }
 			button {
 				margin: 5px;
 				margin-left: 10px;
 				padding: 0;
-				// border:1px solid rgb(236, 130, 9);
-				border-radius: 10px;
-				background-color:rgba(153, 33, 33, 0.11);
-				color: white;
 				cursor: pointer;
+				background:rgba(255, 255, 255, 0);
+				color:white;
+				border:none;
+				position:relative;
+				transition:800ms ease all;
+			  &:hover{
+				background:#1AAB8A;
+				color:#fff;
+			  }
+			  &:before,&:after{
+				content:'';
+				position:absolute;
+				top:0;
+				right:0;
+				height:2px;
+				width:0;
+				background: #1AAB8A;
+				transition:400ms ease all;
+			  }
+			  &:after{
+				right:inherit;
+				top:inherit;
+				left:0;
+				bottom:0;
+			  }
+			  &:hover:before,&:hover:after{
+				width:100%;
+				transition:800ms ease all;
+			  }
 			}
 			
 		}
@@ -550,14 +553,21 @@ form.search {
 		padding-left: 10px;
 		justify-content: flex-start;
 		flex-direction: column;
+		h4 {
+			font-size: 1.5rem;
+		}
 		p {
 			text-align: center;
 			vertical-align: middle;
 			button {
 				border-radius: 10px;
+				// text-align: center;
+				border: 1px solid rgba(0, 0, 0, 0.1);
 				&:hover {
-					box-shadow: 0px 0px 10px 11px rgba(0,0,0,0.2);
-				}	
+				  background-color: $color;
+				  color: #fff;
+				  border-bottom: 4px solid darken($color, 10%);
+				}
 			}
 		}
 		// width: 55%;
@@ -592,7 +602,7 @@ form.search {
 		button {
 			border-radius: 5px;
 			border: 1px solid black;
-			&:hover {
+			&:focus {
 				box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
 			}
 		}
@@ -610,13 +620,17 @@ form.search {
 			margin-bottom: 5px;
 			padding: 5px;
 		}
-		button {
+		input{
 			border-radius: 5px;
-			border: 1px solid black;
-			color: green;
-			&:hover {
-				box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
-			}
+			border: 1px solid rgba(0, 0, 0, 0.1);
+		}
+		button {
+			border: 1px solid rgba(41, 170, 24, 0.15);
+			border-radius: 5px;
+			background-color: green;
+			color: white;
+			cursor: pointer;
+			font-family: "Snell Roundhand", cursive;
 		}
 	}
 	a {
@@ -629,26 +643,28 @@ form.search {
 .authPage {
 	h1 {
 		text-align: center;
-	}
-	padding: 0px 15px 15px 15px;
+	}	
+	padding: 0px 15px 20px 15px;
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: $shadow;
 	form {
-		.input {
-			margin: 6px;
+		input {
+			margin: 20px;
 			padding: 5px;
-		}
-		button {
-			margin-left: 10px;
-		}
-		button {
 			border-radius: 5px;
-			border: 1px solid black;
-			color: green;
-			&:hover {
-				box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
-			}
+			border: 1px solid rgba(0, 0, 0, 0.1);
+		}
+		
+		
+		button {
+			margin-left: 150px;
+			border: 1px solid rgba(41, 170, 24, 0.15);
+			border-radius: 5px;
+			background-color: green;
+			color: white;
+			cursor: pointer;
+			font-family: "Snell Roundhand", cursive;
 		}
 	}
 
@@ -673,18 +689,19 @@ form.search {
 	    justify-content: space-between; 
 	    align-items: center; 
 		padding : 5px;
-		.color-text, .color-fon {
+		.color {
 			border-radius: 6px;
 			border: 1px solid rgba(0, 0, 0, 0.25);
+			cursor: pointer;
 		}
 	}
 	button {
+		border: 1px solid rgba(41, 170, 24, 0.15);
 		border-radius: 5px;
-		border: 1px solid black;
-		color: green;
-		&:hover {
-			box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
-		}
+		background-color: green;
+		color: white;
+		cursor: pointer;
+		font-family: "Snell Roundhand", cursive;
 	}
 }
 
@@ -704,16 +721,16 @@ form.search {
 		margin-bottom: 5px;
 	}	
 	button {
+		border: 1px solid rgba(41, 170, 24, 0.15);
 		border-radius: 5px;
-		border: 1px solid black;
-		color: green;
-		&:hover {
-			box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
-		}
+		background-color: green;
+		color: white;
+		cursor: pointer;
+		font-family: "Snell Roundhand", cursive;
 	}
 }
 
-@nn and (max-width : 600px) {
+@media screen and (max-width : 600px) {
 	.container {
 		width: initial;
 		margin: auto;
@@ -781,11 +798,12 @@ form.search {
 	} 
 	.authPage {
 		form {
-			.input {
-				margin-top: 7px;
-				input {
-					margin-bottom: 5px;	
-				}
+			text-align: center;
+			input {
+				margin: 5px 10px 10px 10px;
+			}
+			button {
+				margin-left: 0;
 			}
 		}
 	}

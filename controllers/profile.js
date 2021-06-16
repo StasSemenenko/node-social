@@ -22,19 +22,21 @@ module.exports  = {
 			var id = req.cookies.user_id;
 			var {name, info, email, password} = req.body;
 			var update = {name, info, email};
-			var user = {name,info,email};
-			if (password) update.password = md5(password);
+			var user = req.body;
 			if (info.length > 50){
-				res.render("profile-edit", {
+				return res.render("profile-edit", {
 				   user,
 				   error: "Информация о Вас не должна привышать 50 символов"
 			   });
 		   }
-			if (password.length < 6) {
-				return res.render("profile-edit", {
-					user,
-					error2: "Пароль должен быть длинее 6 символов"
-				});
+		   	if (password) {
+				update.password = md5(password);
+				if (password.length < 6) {
+					return res.render("profile-edit", {
+						user,
+						error2: "Пароль должен быть длинее 6 символов"
+					});
+				}
 			}
 			await Users.updateOne({_id: id}, update);
 			res.redirect(`/users/${id}`);

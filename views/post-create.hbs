@@ -9,23 +9,23 @@
 		<input class="name" name="name" type="text">
 		<div>
 			<p>Выберите цвет фона</p>
-			<input class="color-fon" name="color" type="color">
+			<input class="color" name="color" type="color">
 		</div>
 
 		<p>Введите содержимое поста</p>
 	    <textarea rows="10" name="content" type="text" class="validate"></textarea>
-		<div>
+		<div class="img">
 			<p>Прикрепить картинку</p>
-  			<button class="my_btn" onclick="click()" type="button">Выбрать фото</button>
+  			<button class="my" onclick="click()" type="button"><i class="fas fa-download"></i></button>
   			<input class="hidden" id="file" type="file" name="img"/>
 		</div>
-		<button type="submit" class="btn">Разместить пост</button>
+		<button class="add" type="submit">Разместить пост</button>
 	</form>
 	
 </div>
 
 <script> 
-	document.querySelector(".my_btn").onclick = () => {
+	document.querySelector(".my").onclick = () => {
 		document.querySelector("#file").click();
 	};
 </script>

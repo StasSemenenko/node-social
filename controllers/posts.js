@@ -4,9 +4,10 @@ const Likes = require("../models/likes");
 const Users = require("../models/users");
 const moment = require("moment");
 const html = require("htmlspecialchars");
-const { countDocuments } = require("../models/posts");
+const { countDocuments, findById } = require("../models/posts");
 const mongoose = require("mongoose");
 const path = require("path");
+const fs = require('fs');
 
 
 module.exports = controller = {
@@ -21,7 +22,7 @@ module.exports = controller = {
 			return posts;
 		}
 		catch(e) {
-nder	}
+			res.render("errors",{code: "500"});	}
 	},
 
 	async homePage(req, res) {
@@ -35,7 +36,7 @@ nder	}
 
 		}
 		catch(e) {
-nder	}
+			res.render("errors",{code: "500"});	}
 	},
 	async createPost(req, res) {
 		var {content, name, color} = req.body;
@@ -62,7 +63,7 @@ nder	}
 			res.redirect("/");
 		}
 		catch (e) {
-nder	}
+			res.render("errors",{code: "500"});r	}
 		
 	},
 	
@@ -72,7 +73,7 @@ nder	}
 			if (!id) return res.redirect("/");
 			var post = await Posts.findOne({_id: id}).lean();
 			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
-			
+			console.log(post.author._id, req.cookies.user_id)
 			res.render("post-edit", {
 				post
 			});
@@ -83,17 +84,15 @@ nder	}
 	},
 	async updatePost(req, res) {
 		try {
-			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			var {id} = req.params;
 			var {name, content, color} = req.body;
 			var update = {name, content, color};
-			var post = await Posts.findOne({_id: id});
+			var post = Posts.findOne({_id: id});
+			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			await Posts.updateOne({_id: id}, update);
-			res.redirect("/");
-			
 		}
 		catch(e) {
-nder	}
+			res.render("errors",{code: "500"});	}
 	}, 
 	async removePost(req, res) {
 		var id = req.params.id;
@@ -106,7 +105,7 @@ nder	}
 			res.redirect(req.get('referer'));
 		}
 		catch(e) {
-nder	}
+			res.render("errors",{code: "500"});	}
 		
 	},
 	async removeComment(req, res) {
@@ -208,19 +207,9 @@ nder	}
 	async editCommentPage(req, res) {
 		try{
 			var id = req.params.id;
-			var comm = req.body.comment;
 			if (!id) return res.redirect("/");
 			var comment = await Comments.findOne({_id: id}).lean();
 			if (comment.author._id.toString() != req.cookies.user_id) return res.redirect("/");
-			if (comment.length = 0){
-				res.clearCookie("input_comment");
-				res.cookie("input_comment", comm);
-				return res.render("profile-edit", {
-					comment: req.cookies.input_comment,
-					error: "Информация о Вас не должна привышать 50 символов"
-				});
-			}
-			res.clearCookie("input_comment");
 			res.render("comment-edit", {
 				comment
 			});
@@ -233,14 +222,16 @@ nder	}
 		try {
 			var {id} = req.params;
 			var {comment} = req.body;
-			var comment = await Comments.findOne({_id: id});
-			if (comment.author._id.toString() != req.cookies.user_id) return res.redirect("/");
+			var comments = await Comments.findOne({_id: id});
+			if (comments.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			await Comments.updateOne({_id: id}, {comment});
-			res.redirect("/posts/" + comment.post);
+			res.redirect(`/posts/${id}`);
 				
 		}
 		catch(e) {
-			res.render("errors",{code: "500"});
+			// res.render("errors",{code: "500"});
+			console.log(e)
+			
 		}
 	},
 }

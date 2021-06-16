@@ -50,10 +50,6 @@
 		</div>
 	</div>
 	<div class="bottom">
-		<a href="/posts/{{_id}}">
-		  <i class="far fa-comment"></i>
-			<label>{{comments}}</label>
-		</a>
 		<div>
 			<a href="/posts/{{_id}}/like">
 				{{#if liked}}
@@ -68,6 +64,11 @@
 				{{/each}}
 			</div>
 		</div>
+		<a href="/posts/{{_id}}">
+		  <i class="far fa-comment"></i>
+			<label>{{comments}}</label>
+		</a>
+		
 	</div>
 </div>
 {{/each}}

@@ -9,12 +9,18 @@
 			{{/if}}
         <div>
 			<p>Выберите цвет фона</p>
-			<input class="color-brd" name="color" type="color" value="{{post.color}}">
+			<input class="color" name="color" type="color" value="{{post.color}}">
 		</div>
 
     	<p>Введите содержимое поста</p>
 	    <textarea rows="10" name="content" type="text" class="validate">{{post.content}}</textarea>
 
+		{{!-- <div class="img"> --}}
+			{{!-- <img style="width: 100px; height:100px;" src="{{post.img}}"> --}}
+			{{!-- <p>Прикрепить картинку</p> --}}
+  			{{!-- <button class="my" onclick="click()" type="button"><i class="fas fa-download"></i></button> --}}
+  			{{!-- <input  id="file" type="file" name="img"/> --}}
+		{{!-- </div>?		 --}}
     	<button type="submit" class="btn btn-primary">Редактировать пост</button>
     </form>
 </div>

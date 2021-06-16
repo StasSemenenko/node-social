@@ -2,25 +2,20 @@
 <div class="page authPage">
     <h1>Регистрация</h1>
 	<form action="/auth/signup" method="POST">
-     	<div class="input">
+     	{{!-- <div class="input"> --}}
             <input name="email" type="email" placeholder="Веведите Ваше email">
-        </div>
+        {{!-- </div> --}}
          
-         <div class="input">
-            <input name="name" type="text" >
-            <label for="title">Веведите Ваше имя</label>
-        </div>
+         {{!-- <div class="input"> --}}
+            <input name="name" type="text" placeholder="Веведите Ваше имя">
+        {{!-- </div> --}}
 
-    	<div class="input">
-            <input name="password" type="password">
-            <label for="price">Введите пароль </label>
-        </div>
-
-    	<div class="input">
-            <input name="password2" type="password" >
-            <label for="poassword2">Введите пароль повторно</label>
-        </div>
-
+    	{{!-- <div class="input"> --}}
+            <input name="password" type="password" placeholder="Придумайте пароль">
+        {{!-- </div> --}}
+    	{{!-- <div class="input"> --}}
+            <input name="password2" type="password" placeholder="Повторите пароль">
+        {{!-- </div> --}}
     	<button class="btn btn-primary">Зарегистрироваться</button>
         
         {{#if error}}
