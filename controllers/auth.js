@@ -56,13 +56,14 @@ module.exports = {
 	},
 	async loginAccount(req, res) {
 		try {
+			var data = new Date(Date.now() + 31536000000.42889);
 			const {email, password} = req.body;
 	
 			var user = await Users.findOne({ email, password: md5(password)})
 			// console.log(user);
 			if (user) {
-				res.cookie("user_id", user._id, { expires: new Date(Date.now() + 31536000000.42889)});
-				res.cookie("name", user.name, { expires: new Date(Date.now() + 31536000000.42889)});
+				res.cookie("user_id", user._id, { expires: data});
+				res.cookie("name", user.name, { expires: data});
 				res.redirect("/"); 
 			}
 			else {

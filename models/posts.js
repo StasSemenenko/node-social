@@ -16,8 +16,7 @@ const PostSchema = new mongoose.Schema({
 		default: "black"
 	},
 	content: {
-		type: String,
-		required: true
+		type: String
 	},
 	img: {
 		type: String

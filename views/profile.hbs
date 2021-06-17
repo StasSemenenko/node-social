@@ -3,7 +3,7 @@
 		<img src="{{user.img}}" alt="Avatar" >
 		{{#ifeq user._id user_id}}
 		    <form class="container" method="POST" action="/profile/photo" enctype="multipart/form-data">
-	  			<button class="my_btn" onclick="click()" type="button">Выбрать фото</button>
+	  			<button class="my_btn"  type="button">Выбрать фото</button>
 	 			<button type="submit"><i class="fas fa-download"></i></button>
 	  			<input class="hidden" id="file" type="file" name="avatar"/>
 			</form>

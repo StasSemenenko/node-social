@@ -19,7 +19,7 @@ router.get("/:id/like", login, posts.like);
 
 router.post("/add", login, fileUpload, posts.createPost);
 router.post("/:id/comment", login, posts.createComment);
-router.post("/:id/edit", login, posts.updatePost);
+router.post("/:id/edit", login, fileUpload, posts.updatePost);
 router.post("/comment/:id/edit", posts. editComment);
 router.post("/search", posts.search);
 

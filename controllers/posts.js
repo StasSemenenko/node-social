@@ -4,10 +4,11 @@ const Likes = require("../models/likes");
 const Users = require("../models/users");
 const moment = require("moment");
 const html = require("htmlspecialchars");
-const { countDocuments, findById } = require("../models/posts");
+// const { countDocuments, findById } = require("../models/posts");
 const mongoose = require("mongoose");
 const path = require("path");
 const fs = require('fs');
+
 
 
 module.exports = controller = {
@@ -22,7 +23,8 @@ module.exports = controller = {
 			return posts;
 		}
 		catch(e) {
-			res.render("errors",{code: "500"});	}
+			res.render("errors",{code: "500"});	
+		}
 	},
 
 	async homePage(req, res) {
@@ -36,7 +38,8 @@ module.exports = controller = {
 
 		}
 		catch(e) {
-			res.render("errors",{code: "500"});	}
+			res.render("errors",{code: "500"});	
+		}
 	},
 	async createPost(req, res) {
 		var {content, name, color} = req.body;
@@ -63,7 +66,8 @@ module.exports = controller = {
 			res.redirect("/");
 		}
 		catch (e) {
-			res.render("errors",{code: "500"});r	}
+			res.render("errors",{code: "500"});
+		}
 		
 	},
 	
@@ -73,7 +77,7 @@ module.exports = controller = {
 			if (!id) return res.redirect("/");
 			var post = await Posts.findOne({_id: id}).lean();
 			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
-			console.log(post.author._id, req.cookies.user_id)
+			// console.log(post.author._id, req.cookies.user_id)
 			res.render("post-edit", {
 				post
 			});
@@ -83,16 +87,28 @@ module.exports = controller = {
 		}
 	},
 	async updatePost(req, res) {
+		var {id} = req.params;
+		var {name, content, color} = req.body;
+		var update = {name, content, color};
+		if (!name) return res.redirect("back");
+		// if(!content) content = " ";
 		try {
-			var {id} = req.params;
-			var {name, content, color} = req.body;
-			var update = {name, content, color};
-			var post = Posts.findOne({_id: id});
-			if (post.author._id.toString() != req.cookies.user_id) return res.redirect("/");
+			var post = Posts.findOne({_id: id}).populate("author").lean();
+			// if (post.author != req.cookies.user_id) return res.redirect("/users");
+			if(req.files && req.files.img){
+				var type = req.files.img.name.split(".").pop();
+				var img = path.resolve(__dirname, "..", "public/img/posts", `${id}.${type}`);
+				await req.files.img.mv(img);
+				update.img = `/public/img/posts/${id}.${type}`;
+			}
+			// console.log(req.body.img)
 			await Posts.updateOne({_id: id}, update);
+			res.redirect("/");
 		}
 		catch(e) {
-			res.render("errors",{code: "500"});	}
+			// res.render("errors",{code: "500"});
+			console.log(e)	
+		}
 	}, 
 	async removePost(req, res) {
 		var id = req.params.id;
@@ -105,7 +121,8 @@ module.exports = controller = {
 			res.redirect(req.get('referer'));
 		}
 		catch(e) {
-			res.render("errors",{code: "500"});	}
+			res.render("errors",{code: "500"});	
+		}
 		
 	},
 	async removeComment(req, res) {
@@ -181,7 +198,7 @@ module.exports = controller = {
 					$addToSet:{likes: user_id}
 				})
 			}
-			res.redirect(req.get("referer"));
+			res.redirect("back");
 
 		}
 		catch(e) {
@@ -225,7 +242,7 @@ module.exports = controller = {
 			var comments = await Comments.findOne({_id: id});
 			if (comments.author._id.toString() != req.cookies.user_id) return res.redirect("/");
 			await Comments.updateOne({_id: id}, {comment});
-			res.redirect(`/posts/${id}`);
+			res.redirect(`/posts/${comments.post}`);
 				
 		}
 		catch(e) {
