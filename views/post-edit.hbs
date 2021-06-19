@@ -15,10 +15,26 @@
     	<p>Введите содержимое поста</p>
 	    <textarea rows="10" name="content" type="text" class="validate">{{post.content}}</textarea>
 		<div class="upload">
-			<img src="{{post.img}}">
-			<p>Прикрепить картинку</p>
-  			<button class="my" type="button"><i class="fas fa-download"></i></button>
-  			<input class="hidden" id="file" type="file" name="img"/>
+			<div>
+				{{#if post.img}}
+				<img src="{{post.img}}">
+				<button class="delete1" type="button"><i class="fas fa-trash"></i></button>
+				<input class="hidden" name="d1" id="d1"/>
+				{{/if}}
+			</div>
+			<div class="button">
+				<div>
+					<p>Прикрепить картинку</p>
+		  			<button class="my" type="button"><i class="fas fa-download"></i></button>
+				</div>
+
+				<div>
+					<p>Открепить картинку</p>
+					<button class="delete2" type="button"><i class="fas fa-trash"></i></button>
+					<input class="hidden" name="d2" id="d2"/>
+		  			<input class="hidden" id="file" type="file" name="img"/>
+				</div>
+			</div>
 		</div>
 
     	<button type="submit" class="btn btn-primary">Редактировать пост</button>
@@ -28,5 +44,13 @@
 <script> 
 	document.querySelector(".my").onclick = () => {
 		document.querySelector("#file").click();
+	};
+	document.querySelector(".delete1").onclick = () => {
+		document.getElementById("d1").value = 1;
+		
+	};
+	document.querySelector(".delete2").onclick = () => {
+		document.getElementById("d2").value = 1;
+		
 	};
 </script>

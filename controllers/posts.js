@@ -42,7 +42,7 @@ module.exports = controller = {
 		}
 	},
 	async createPost(req, res) {
-		var {content, name, color} = req.body;
+		var {content, name, color, d2} = req.body;
 		if (!name) return  res.render("post-create",{
 			error: "Введите название поста"
 		});
@@ -55,13 +55,14 @@ module.exports = controller = {
 				content,
 				color
 			}
-			if(req.files.img){
-				var type = req.files.img.name.split(".").pop();
-				var img = path.resolve(__dirname, "..", "public/img/posts", `${data._id}.${type}`);
-				await req.files.img.mv(img);
-				data.img = `/public/img/posts/${data._id}.${type}`;
+			if(d2 != 1) {
+				if(req.files && req.files.img){
+					var type = req.files.img.name.split(".").pop();
+					var img = path.resolve(__dirname, "..", "public/img/posts", `${data._id}.${type}`);
+					await req.files.img.mv(img);
+					data.img = `/public/img/posts/${data._id}.${type}`;
+				}
 			}
-
 			await Posts.create(data);
 			res.redirect("/");
 		}
@@ -88,18 +89,21 @@ module.exports = controller = {
 	},
 	async updatePost(req, res) {
 		var {id} = req.params;
-		var {name, content, color} = req.body;
+		var {name, content, color, d2} = req.body;
 		var update = {name, content, color};
 		if (!name) return res.redirect("back");
 		// if(!content) content = " ";
 		try {
 			var post = Posts.findOne({_id: id}).populate("author").lean();
 			// if (post.author != req.cookies.user_id) return res.redirect("/users");
-			if(req.files && req.files.img){
-				var type = req.files.img.name.split(".").pop();
-				var img = path.resolve(__dirname, "..", "public/img/posts", `${id}.${type}`);
-				await req.files.img.mv(img);
-				update.img = `/public/img/posts/${id}.${type}`;
+			if(d1 = 1) update.img = "";
+			if(d2 != 1){
+				if(req.files && req.files.img){
+					var type = req.files.img.name.split(".").pop();
+					var img = path.resolve(__dirname, "..", "public/img/posts", `${id}.${type}`);
+					await req.files.img.mv(img);
+					update.img = `/public/img/posts/${id}.${type}`;
+				}
 			}
 			// console.log(req.body.img)
 			await Posts.updateOne({_id: id}, update);

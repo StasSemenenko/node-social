@@ -14,18 +14,30 @@
 
 		<p>Введите содержимое поста</p>
 	    <textarea rows="10" name="content" type="text" class="validate"></textarea>
-		<div class="img">
-			<p>Прикрепить картинку</p>
-  			<button class="my" type="button"><i class="fas fa-download"></i></button>
-  			<input class="hidden" id="file" type="file" name="img"/>
+		<div class="upload">
+			<div>
+				<p>Прикрепить картинку</p>
+	  			<button class="my" type="button"><i class="fas fa-download"></i></button>
+	  			<input class="hidden" id="file" type="file" name="img"/>
+			</div>
+				
+			<div>
+					<p>Открепить картинку</p>
+				<button class="delete" type="button"><i class="fas fa-trash"></i></button>
+				<input class="hidden" name="d2" id="delete"/>
+			</div>
 		</div>
 		<button class="add" type="submit">Разместить пост</button>
 	</form>
-	
+
 </div>
 
 <script> 
 	document.querySelector(".my").onclick = () => {
 		document.querySelector("#file").click();
+	};
+	document.querySelector(".delete").onclick = () => {
+		document.getElementById("delete").value = 1;
+		
 	};
 </script>
